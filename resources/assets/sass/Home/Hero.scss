@@ -14,7 +14,7 @@
     -ms-flex-wrap: wrap;
     justify-content: space-between;
     -ms-flex-pack: center;
-
+        margin-top: 55px;
     min-height: 600px;
     .rbp-img {
       display: -ms-flexbox;
@@ -24,7 +24,6 @@
           -ms-flex-align: center;
           align-items: center;
           z-index: 1;
-          margin-top: 56px;
           margin-left: -70px;
       img {
         width: 75%;
