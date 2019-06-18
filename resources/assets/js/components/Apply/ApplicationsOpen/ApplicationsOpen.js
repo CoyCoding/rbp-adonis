@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import BrowserHistory  from 'react-router';
 import {HrefLinks} from '../.././Utils/HrefLinks';
 import Checkbox from './Checkbox';
 import axios from 'axios';
+
 //These are temp values that should come from a DataBase for the checkboxes
 const DATES = ['june 28', 'june 29'];
 const TIMES = ['12:00 AM - 2:00 AM','2:00 AM - 4:00 AM','4:00 AM - 6:00 AM','6:00 AM - 8:00 AM','8:00 AM - 10:00 AM','10:00 AM - 12:00 PM','12:00 PM - 2:00 PM','2:00 PM - 4:00 PM','4:00 PM - 6:00 PM','6:00 PM - 8:00 PM','8:00 PM - 10:00 PM','10:00 PM - 12:00 AM'];
@@ -97,12 +97,18 @@ export default class ApplicationsOpen extends Component{
 
   handleSubmit = (submitEvent) =>{
     submitEvent.preventDefault();
-
     const data = this.state;
-    axios
-      .post('/apply', data)
-      .then(function(res){
-    });
+    try{
+      axios
+        .post('/apply', data)
+        .then(function(res){
+          //redirect after application NEEDS STATUS 200 PAGE
+           window.location = '/';
+      });
+    } catch (error){
+      window.location = "/appy";
+    }
+
   }
 
   createDateCheckbox = date => (
@@ -135,6 +141,7 @@ export default class ApplicationsOpen extends Component{
   createTimeCheckboxes = () => TIMES.map(this.createTimeCheckbox);
 
   render(){
+      console.log(this.props)
     return (
       <section id="apps-open">
       <div className="faq">

@@ -23,3 +23,5 @@ Route.group(()=>{
 }).prefix('apply')
 // Route.get('/apply', 'ApplicationController.index');
 Route.get('/schedule', 'ScheduleController.index');
+
+Route.get('/admin', 'AdminController.index');

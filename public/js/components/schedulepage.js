@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 115:
+/***/ 112:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -44,7 +44,7 @@ exports.default = Heart;
 
 /***/ }),
 
-/***/ 260:
+/***/ 253:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56,27 +56,27 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Schedule = Schedule;
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(75);
+var _Header = __webpack_require__(72);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _TakingApplications = __webpack_require__(295);
+var _TakingApplications = __webpack_require__(288);
 
 var _TakingApplications2 = _interopRequireDefault(_TakingApplications);
 
-var _Offseason = __webpack_require__(293);
+var _Offseason = __webpack_require__(286);
 
 var _Offseason2 = _interopRequireDefault(_Offseason);
 
-var _FinishedSchedule = __webpack_require__(292);
+var _FinishedSchedule = __webpack_require__(285);
 
 var _FinishedSchedule2 = _interopRequireDefault(_FinishedSchedule);
 
-var _ApplicationsClosed = __webpack_require__(291);
+var _ApplicationsClosed = __webpack_require__(284);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -139,7 +139,7 @@ exports.default = Schedule;
 
 /***/ }),
 
-/***/ 291:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -149,15 +149,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(115);
+var _Heart = __webpack_require__(112);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(76);
+var _HrefLinks = __webpack_require__(73);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -204,7 +204,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 292:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -214,7 +214,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -232,7 +232,7 @@ exports.default = FinishedSchedule;
 
 /***/ }),
 
-/***/ 293:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -242,15 +242,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(115);
+var _Heart = __webpack_require__(112);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(76);
+var _HrefLinks = __webpack_require__(73);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -297,7 +297,7 @@ exports.default = Offseason;
 
 /***/ }),
 
-/***/ 294:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -309,15 +309,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(49);
+var _reactDom = __webpack_require__(48);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Schedule = __webpack_require__(260);
+var _Schedule = __webpack_require__(253);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
@@ -367,7 +367,7 @@ _reactDom2.default.render(_react2.default.createElement(SchedulePage, null), doc
 
 /***/ }),
 
-/***/ 295:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -377,15 +377,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(115);
+var _Heart = __webpack_require__(112);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(76);
+var _HrefLinks = __webpack_require__(73);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -432,7 +432,7 @@ exports.default = TakingApplications;
 
 /***/ }),
 
-/***/ 75:
+/***/ 72:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -442,11 +442,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(5);
+var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(89);
+__webpack_require__(86);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -523,7 +523,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 76:
+/***/ 73:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -539,21 +539,21 @@ var HrefLinks = exports.HrefLinks = {
 
 /***/ }),
 
-/***/ 82:
+/***/ 79:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(143)(true);
+exports = module.exports = __webpack_require__(140)(true);
 // Module
 exports.push([module.i, "", "",{"version":3,"sources":[],"names":[],"mappings":"","file":"Header.scss"}]);
 
 
 /***/ }),
 
-/***/ 89:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(82);
+var content = __webpack_require__(79);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -567,7 +567,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(165)(content, options);
+var update = __webpack_require__(160)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -600,4 +600,4 @@ if(false) {
 
 /***/ })
 
-},[294]);
+},[287]);
