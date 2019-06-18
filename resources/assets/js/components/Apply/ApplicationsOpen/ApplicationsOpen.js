@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import BrowserHistory  from 'react-router';
 import {HrefLinks} from '../.././Utils/HrefLinks';
 import Checkbox from './Checkbox';
 import axios from 'axios';
@@ -26,7 +27,7 @@ export default class ApplicationsOpen extends Component{
     {}
   ),
   textFields: {},
-  backup: ''
+  backup: false
   };
 }
 
@@ -99,9 +100,8 @@ export default class ApplicationsOpen extends Component{
 
     const data = this.state;
     axios
-      .post('/api/apply/', data)
+      .post('/apply', data)
       .then(function(res){
-        console.log(res)
     });
   }
 
