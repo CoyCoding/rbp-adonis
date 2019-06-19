@@ -382,7 +382,6 @@ var ApplicationsOpen = function (_Component) {
       var data = _this.state;
       try {
         _axios2.default.post('/apply', data).then(function (res) {
-          //redirect after application NEEDS STATUS 200 PAGE
           window.location = '/';
         });
       } catch (error) {
@@ -441,7 +440,6 @@ var ApplicationsOpen = function (_Component) {
   _createClass(ApplicationsOpen, [{
     key: 'render',
     value: function render() {
-      console.log();
       return _react2.default.createElement(
         'section',
         { id: 'apps-open' },
@@ -506,7 +504,7 @@ var ApplicationsOpen = function (_Component) {
             { className: 'form-wrapper' },
             _react2.default.createElement(
               'form',
-              null,
+              { onSubmit: this.handleSubmit },
               _react2.default.createElement(
                 'div',
                 { className: 'form-item' },

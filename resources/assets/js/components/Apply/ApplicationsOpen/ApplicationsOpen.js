@@ -102,7 +102,6 @@ export default class ApplicationsOpen extends Component{
       axios
         .post('/apply', data)
         .then(function(res){
-          //redirect after application NEEDS STATUS 200 PAGE
            window.location = '/';
       });
     } catch (error){
@@ -141,7 +140,6 @@ export default class ApplicationsOpen extends Component{
   createTimeCheckboxes = () => TIMES.map(this.createTimeCheckbox);
 
   render(){
-    console.log()
     return (
       <section id="apps-open">
       <div className="faq">
@@ -164,7 +162,7 @@ export default class ApplicationsOpen extends Component{
             <h5>*indicates a required field</h5>
           </div>
           <div className="form-wrapper">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <div className="form-item">
                 <label htmlFor="twitchName">Twitch Link*</label>
                 <p className="description">Your profile name exactly as it appears on twitch.</p>

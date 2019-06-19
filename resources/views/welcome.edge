@@ -12,15 +12,8 @@
 
 <body>
  <style> body{opacity: 1;}</style>
- <form method="POST" action="apply">
-     <div id="app">{{ csrfField() }}</div>
- </form>
+  <div id="app"></div>
 
-  @if(appStatus)
-    <div>
-      {{appStatus}}
-    </div>
-  @endif
   <script src="/js/components/vendor.js"></script>
   <script src="/js/components/index.js"></script>
 </body>
