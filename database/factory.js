@@ -19,3 +19,10 @@ Factory.blueprint('App/Models/ScheduleStatus', (faker, i, data) => {
     status: data.status
   }
 })
+
+Factory.blueprint('App/Models/User', (faker, i, data) => {
+  return {
+    username: data.username,
+    password: data.password
+  }
+})
