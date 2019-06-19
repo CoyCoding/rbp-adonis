@@ -8,9 +8,10 @@ const VENDOR_LIBS = [
 
 module.exports = {
   entry: {
-    homepage: './resources/assets/js/components/Home/HomePage.js',
-    applypage: './resources/assets/js/components/Apply/ApplyPage.js',
-    schedulepage: './resources/assets/js/components/Schedule/SchedulePage.js',
+    index: './resources/assets/js/components/index.js',
+    // homepage: './resources/assets/js/components/Home/HomePage.js',
+    // applypage: './resources/assets/js/components/Apply/ApplyPage.js',
+    // schedulepage: './resources/assets/js/components/Schedule/SchedulePage.js',
     vendor: VENDOR_LIBS
   },
   output: { filename: '[name].js',

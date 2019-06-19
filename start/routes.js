@@ -17,11 +17,12 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome');
-Route.group(()=>{
-  Route.get('','ApplicationController.index')
-  Route.post('','ApplicationController.store')
-}).prefix('apply')
-// Route.get('/apply', 'ApplicationController.index');
-Route.get('/schedule', 'ScheduleController.index');
+// Route.group(()=>{
+//   Route.get('','ApplicationController.index')
+//   Route.post('','ApplicationController.store')
+// }).prefix('apply')
+// // Route.get('/apply', 'ApplicationController.index');
+// Route.get('/schedule', 'ScheduleController.index');
+// Route.get('/admin', 'AdminController.index');
 
-Route.get('/admin', 'AdminController.index');
+Route.any('*', ({ view }) => view.render('welcome'))
