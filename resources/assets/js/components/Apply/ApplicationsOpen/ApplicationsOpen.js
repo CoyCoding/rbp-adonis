@@ -141,7 +141,6 @@ export default class ApplicationsOpen extends Component{
   createTimeCheckboxes = () => TIMES.map(this.createTimeCheckbox);
 
   render(){
-      console.log(this.props)
     return (
       <section id="apps-open">
       <div className="faq">

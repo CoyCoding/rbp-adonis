@@ -11,13 +11,9 @@ export default class AdminPage extends Component {
 			scheduleStatus: 'takingApplications',
 		};
 	};
-
-	scheduleStatusChange = (event) => {
-			this.setState({
-				scheduleStatus: event.target.value
-			});
-	};
-
+  componentWillMount(){
+    
+  }
 	render() {
 		return (
 
@@ -26,4 +22,4 @@ export default class AdminPage extends Component {
 	}
 }
 
-ReactDOM.render(<ApplyPage />, document.getElementById('app'));
+ReactDOM.render(<AdminPage />, document.getElementById('app'));
