@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {HrefLinks} from '../.././Utils/HrefLinks';
 import Checkbox from './Checkbox';
+import { createHashHistory } from 'history'
 import axios from 'axios';
 
 //These are temp values that should come from a DataBase for the checkboxes
@@ -97,15 +98,16 @@ export default class ApplicationsOpen extends Component{
 
   handleSubmit = (submitEvent) =>{
     submitEvent.preventDefault();
+    const self = this;
     const data = this.state;
     try{
       axios
         .post('/apply', data)
         .then(function(res){
-           window.location = '/';
+          self.props.history.push('/');
       });
     } catch (error){
-      window.location = "/appy";
+      self.props.history.push('/error');
     }
 
   }

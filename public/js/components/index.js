@@ -151,7 +151,7 @@ var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(158);
+var _reactRouterDom = __webpack_require__(159);
 
 var _Header = __webpack_require__(109);
 
@@ -297,6 +297,8 @@ var _Checkbox = __webpack_require__(272);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
+var _history = __webpack_require__(139);
+
 var _axios = __webpack_require__(253);
 
 var _axios2 = _interopRequireDefault(_axios);
@@ -379,13 +381,14 @@ var ApplicationsOpen = function (_Component) {
 
     _this.handleSubmit = function (submitEvent) {
       submitEvent.preventDefault();
+      var self = _this;
       var data = _this.state;
       try {
         _axios2.default.post('/apply', data).then(function (res) {
-          window.location = '/';
+          self.props.history.push('/');
         });
       } catch (error) {
-        window.location = "/appy";
+        self.props.history.push('/error');
       }
     };
 
@@ -746,15 +749,15 @@ function Apply(props) {
     _react2.default.createElement(
       'div',
       { className: 'applications-wrapper' },
-      handleScheduleStatus(props.scheduleStatus)
+      handleScheduleStatus(props)
     )
   );
 }
 
-var handleScheduleStatus = exports.handleScheduleStatus = function handleScheduleStatus(scheduleStatus) {
-  switch (scheduleStatus) {
+var handleScheduleStatus = exports.handleScheduleStatus = function handleScheduleStatus(props) {
+  switch (props.scheduleStatus) {
     case 'takingApplications':
-      return _react2.default.createElement(_ApplicationsOpen2.default, null);
+      return _react2.default.createElement(_ApplicationsOpen2.default, { history: props.history });
     default:
       return _react2.default.createElement(_ApplicationsClosed2.default, null);
   }

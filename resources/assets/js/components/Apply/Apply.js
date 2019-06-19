@@ -5,20 +5,21 @@ import Header from '.././Header/Header.js';
 
 export function Apply(props) {
   return (
+
     <section id="applications">
       <Header/>
       <div className="applications-wrapper">
-      {handleScheduleStatus(props.scheduleStatus)}
+      {handleScheduleStatus(props)}
       </div>
     </section>
   );
 }
 
-export const handleScheduleStatus = (scheduleStatus) =>{
-  switch(scheduleStatus){
+export const handleScheduleStatus = (props) =>{
+  switch(props.scheduleStatus){
     case 'takingApplications':
     return(
-      <ApplicationsOpen />
+      <ApplicationsOpen history={props.history} />
     )
     default:
     return(
