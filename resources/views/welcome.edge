@@ -7,12 +7,20 @@
   <link href="css/main.css" rel="stylesheet"/>
   <link href="css/Home/Home.css" rel="stylesheet"/>
   <link href="css/Schedule/Schedule.css" rel="stylesheet"/>
+    <link href="css/Apply/Apply.css" rel="stylesheet"/>
 </head>
 
 <body>
  <style> body{opacity: 1;}</style>
+ <form method="POST" action="apply">
+     <div id="app">{{ csrfField() }}</div>
+ </form>
 
-  <div id="app"></div>
+  @if(appStatus)
+    <div>
+      {{appStatus}}
+    </div>
+  @endif
   <script src="/js/components/vendor.js"></script>
   <script src="/js/components/index.js"></script>
 </body>

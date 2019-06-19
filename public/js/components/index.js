@@ -441,6 +441,7 @@ var ApplicationsOpen = function (_Component) {
   _createClass(ApplicationsOpen, [{
     key: 'render',
     value: function render() {
+      console.log();
       return _react2.default.createElement(
         'section',
         { id: 'apps-open' },
@@ -505,7 +506,7 @@ var ApplicationsOpen = function (_Component) {
             { className: 'form-wrapper' },
             _react2.default.createElement(
               'form',
-              { onSubmit: this.handleSubmit },
+              null,
               _react2.default.createElement(
                 'div',
                 { className: 'form-item' },

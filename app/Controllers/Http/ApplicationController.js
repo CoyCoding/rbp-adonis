@@ -2,7 +2,11 @@
 
 class ApplicationController {
   async index({view}){
-    return view.render('apply')
+    const appStatus = 'takingApplications';
+    if(appStatus != 'takingApplications'){
+      return view.render('welcome', {appStatus: appStatus});
+    }
+    return view.render('apply', {appStatus: appStatus});
   }
   async store({request, response}){
     console.log(request.post())
