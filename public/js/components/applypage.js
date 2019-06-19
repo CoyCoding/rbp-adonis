@@ -257,7 +257,6 @@ var ApplicationsOpen = function (_Component) {
   _createClass(ApplicationsOpen, [{
     key: 'render',
     value: function render() {
-      console.log(this.props);
       return _react2.default.createElement(
         'section',
         { id: 'apps-open' },
