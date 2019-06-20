@@ -7,6 +7,7 @@ class AvailableDatesSchema extends Schema {
   up () {
     this.create('available_dates', (table) => {
       table.increments()
+      table.string('date').notNullable()
       table.timestamps()
     })
   }

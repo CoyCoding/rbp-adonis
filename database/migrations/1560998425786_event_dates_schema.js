@@ -7,6 +7,8 @@ class EventDatesSchema extends Schema {
   up () {
     this.create('event_dates', (table) => {
       table.increments()
+      table.string('event_date').notNullable()
+      table.integer('event_id').unsigned().references('id').inTable('Events')
       table.timestamps()
     })
   }
