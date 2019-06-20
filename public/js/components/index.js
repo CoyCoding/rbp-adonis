@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 107:
+/***/ 109:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -89,7 +89,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 108:
+/***/ 110:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -99,7 +99,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -133,23 +133,7 @@ exports.default = Heart;
 
 /***/ }),
 
-/***/ 109:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var HrefLinks = exports.HrefLinks = {
-  twitter: 'https://twitter.com/RetroBlockParty',
-  discord: 'https://discord.gg/ppYfqHA '
-};
-
-/***/ }),
-
-/***/ 239:
+/***/ 248:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,29 +147,29 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(157);
+var _reactRouterDom = __webpack_require__(159);
 
-var _Header = __webpack_require__(107);
+var _Header = __webpack_require__(109);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(249);
+var _Home = __webpack_require__(276);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _NotFound = __webpack_require__(251);
+var _NotFound = __webpack_require__(278);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _Schedule = __webpack_require__(255);
+var _Schedule = __webpack_require__(282);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
-var _Apply = __webpack_require__(246);
+var _Apply = __webpack_require__(273);
 
 var _Apply2 = _interopRequireDefault(_Apply);
 
@@ -256,7 +240,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 244:
+/***/ 270:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -267,7 +251,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ApplicationsClosed = ApplicationsClosed;
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -289,14 +273,461 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 245:
-/***/ (function(module, exports) {
+/***/ 271:
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/Apply/ApplicationsOpen/ApplicationsOpen.js: Unexpected token, expected ; (78:5)\n\n  76 | \n  77 |     })\n> 78 |     })\n     |      ^\n  79 |   }\n  80 | \n  81 |   handleSubmit = async (submitEvent) =>{\n");
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(11);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _HrefLinks = __webpack_require__(84);
+
+var _Checkbox = __webpack_require__(272);
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+var _history = __webpack_require__(139);
+
+var _axios = __webpack_require__(253);
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+//These are temp values that should come from a DataBase for the checkboxes
+var DATES = ['june 28', 'june 29'];
+var TIMES = ['12:00 AM - 2:00 AM', '2:00 AM - 4:00 AM', '4:00 AM - 6:00 AM', '6:00 AM - 8:00 AM', '8:00 AM - 10:00 AM', '10:00 AM - 12:00 PM', '12:00 PM - 2:00 PM', '2:00 PM - 4:00 PM', '4:00 PM - 6:00 PM', '6:00 PM - 8:00 PM', '8:00 PM - 10:00 PM', '10:00 PM - 12:00 AM'];
+
+var ApplicationsOpen = function (_Component) {
+  _inherits(ApplicationsOpen, _Component);
+
+  function ApplicationsOpen(props) {
+    var _this2 = this;
+
+    _classCallCheck(this, ApplicationsOpen);
+
+    //Set the value of the all the dates in the date array to false
+    var _this = _possibleConstructorReturn(this, (ApplicationsOpen.__proto__ || Object.getPrototypeOf(ApplicationsOpen)).call(this, props));
+
+    _this.handleTextChange = function (event) {
+      var name = event.target.name;
+
+      _this.setState({
+        textFields: _extends({}, _this.state.textFields, _defineProperty({}, name, event.target.value))
+
+      }, function () {
+        console.log(_this.state);
+      });
+    };
+
+    _this.handleDateChange = function (event) {
+      var name = event.target.name;
+
+      _this.setState({
+        dates: _extends({}, _this.state.dates, _defineProperty({}, name, !_this.state.dates[name]))
+
+      });
+    };
+
+    _this.handleTimeChange = function (event) {
+      var name = event.target.name;
+
+      _this.setState({
+        times: _extends({}, _this.state.times, _defineProperty({}, name, !_this.state.times[name]))
+      });
+    };
+
+    _this.handleBackupChange = function (event) {
+      _this.setState({
+        backup: !_this.state.backup
+
+      });
+    };
+
+    _this.handleSubmit = function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(submitEvent) {
+        var self, data;
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                submitEvent.preventDefault();
+                self = _this;
+                data = _this.state;
+                _context.prev = 3;
+                _context.next = 6;
+                return _axios2.default.post('/apply', data).then(function (res) {
+                  // self.props.history.push('/');
+                  // window.scrollTo(0, 0);
+                  console.log(res);
+                });
+
+              case 6:
+                _context.next = 12;
+                break;
+
+              case 8:
+                _context.prev = 8;
+                _context.t0 = _context['catch'](3);
+
+                console.log(_context.t0);
+                self.props.history.push('/apply-error');
+                //window.scrollTo(0, 0);
+
+              case 12:
+              case 'end':
+                return _context.stop();
+            }
+          }
+        }, _callee, _this2, [[3, 8]]);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    _this.createDateCheckbox = function (date) {
+      return _react2.default.createElement(_Checkbox2.default, {
+        label: date,
+        isSelected: _this.state.dates[date],
+        onCheckboxChange: _this.handleDateChange,
+        key: date
+      });
+    };
+
+    _this.createTimeCheckbox = function (time) {
+      return _react2.default.createElement(_Checkbox2.default, {
+        label: time,
+        isSelected: _this.state.times[time],
+        onCheckboxChange: _this.handleTimeChange,
+        key: time
+      });
+    };
+
+    _this.createBackupCheckbox = function (backup) {
+      return _react2.default.createElement(_Checkbox2.default, {
+        label: 'yes',
+        isSelected: _this.state.backup,
+        onCheckboxChange: _this.handleBackupChange
+      });
+    };
+
+    _this.createDateCheckboxes = function () {
+      return DATES.map(_this.createDateCheckbox);
+    };
+
+    _this.createTimeCheckboxes = function () {
+      return TIMES.map(_this.createTimeCheckbox);
+    };
+
+    _this.state = {
+      dates: DATES.reduce(function (dates, date) {
+        return _extends({}, dates, _defineProperty({}, date, false));
+      }, {}),
+      //Set the value of the all the times in the date array to false
+      times: TIMES.reduce(function (times, time) {
+        return _extends({}, times, _defineProperty({}, time, false));
+      }, {}),
+      textFields: {},
+      backup: false
+    };
+    return _this;
+  }
+
+  _createClass(ApplicationsOpen, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'section',
+        { id: 'apps-open' },
+        _react2.default.createElement(
+          'div',
+          { className: 'faq' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            'Applications are Open'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'application-info' },
+            _react2.default.createElement(
+              'p',
+              null,
+              'The following form is for May event. Please fill out the form and make sure you are a member of ',
+              _react2.default.createElement(
+                'a',
+                { href: _HrefLinks.HrefLinks.discord },
+                'Discord'
+              ),
+              ' so that we may contact you.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'Retro inspired games (The Messenger, Cuphead, etc.) will be considered. However, all games are subject to the approval of RBP staff.  If you apply with Metroid and you\'ve never beaten it, your application may be denied.  Applicants must be 18 years of age and a Twitch Affiliate. '
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'The more dates and times you are available, the higher your chance of getting in is. If you only apply for one date with only a four hour window, it\'ll be difficult to fit you in.'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'We look forward to reviewing your application!'
+            )
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'application-form' },
+          _react2.default.createElement(
+            'div',
+            { className: 'form-header' },
+            _react2.default.createElement(
+              'h5',
+              null,
+              'Please complete the form below'
+            ),
+            _react2.default.createElement(
+              'h5',
+              null,
+              '*indicates a required field'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'form-wrapper' },
+            _react2.default.createElement(
+              'form',
+              { onSubmit: this.handleSubmit },
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'twitchName' },
+                  'Twitch Link*'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'Your profile name exactly as it appears on twitch.'
+                ),
+                _react2.default.createElement('input', { name: 'twitchName', onChange: this.handleTextChange, type: 'text', placeholder: 'https://www.twitch.tv/Batman' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'discordName' },
+                  'Discord Name*'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'Please make sure you\'ve joined the official RBP Discord so we can message you easily.'
+                ),
+                _react2.default.createElement('input', { name: 'discordName', onChange: this.handleTextChange, type: 'text', placeholder: 'Batman' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'twitterName' },
+                  'Twitter Name'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'Please enter your Twitter name so we may easily find and @ you during your segment.'
+                ),
+                _react2.default.createElement('input', { name: 'twitterName', onChange: this.handleTextChange, type: 'text', placeholder: 'Batman' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'firstGame' },
+                  'Game 1*'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'The first game you will play during your segment.'
+                ),
+                _react2.default.createElement('input', { name: 'firstGame', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bro. 2 BBy' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'secondGame' },
+                  'Game 2*'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'The second game you will play during your segment.'
+                ),
+                _react2.default.createElement('input', { name: 'secondGame', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'h5',
+                  null,
+                  'Available Dates*'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'checkbox-section' },
+                  this.createDateCheckboxes()
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'h5',
+                  null,
+                  'Available Times*'
+                ),
+                _react2.default.createElement(
+                  'p',
+                  { className: 'description' },
+                  'All Times are in Eastern Time, the more availability you have, the higher chance you have to get into the event!'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'checkbox-section' },
+                  this.createTimeCheckboxes()
+                )
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'donationIncentive' },
+                  'Donation Incentive'
+                ),
+                _react2.default.createElement('input', { name: 'donationIncentive', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'label',
+                  { htmlFor: 'whatDoYouLike' },
+                  'Why would you like to participate in RetroBlockParty? *'
+                ),
+                _react2.default.createElement('textarea', { name: 'whatDoYouLike', onChange: this.handleTextChange, type: 'text', placeholder: 'I like the food' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'form-item' },
+                _react2.default.createElement(
+                  'h5',
+                  null,
+                  'Would you be willing to be available as a backup streamer?'
+                ),
+                _react2.default.createElement(
+                  'div',
+                  { className: 'checkbox-section' },
+                  this.createBackupCheckbox()
+                )
+              ),
+              _react2.default.createElement(
+                'button',
+                { name: 'submint', type: 'submit' },
+                ' submit'
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return ApplicationsOpen;
+}(_react.Component);
+
+exports.default = ApplicationsOpen;
 
 /***/ }),
 
-/***/ 246:
+/***/ 272:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(11);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Checkbox = function Checkbox(_ref) {
+  var label = _ref.label,
+      isSelected = _ref.isSelected,
+      onCheckboxChange = _ref.onCheckboxChange;
+  return _react2.default.createElement(
+    "div",
+    { className: "form-check" },
+    _react2.default.createElement(
+      "label",
+      null,
+      _react2.default.createElement("input", {
+        type: "checkbox",
+        name: label,
+        checked: isSelected,
+        onChange: onCheckboxChange,
+        className: "form-check-input"
+      }),
+      label
+    )
+  );
+};
+
+exports.default = Checkbox;
+
+/***/ }),
+
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -308,19 +739,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Apply = Apply;
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ApplicationsOpen = __webpack_require__(245);
+var _ApplicationsOpen = __webpack_require__(271);
 
 var _ApplicationsOpen2 = _interopRequireDefault(_ApplicationsOpen);
 
-var _ApplicationsClosed = __webpack_require__(244);
+var _ApplicationsClosed = __webpack_require__(270);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
-var _Header = __webpack_require__(107);
+var _Header = __webpack_require__(109);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -352,7 +783,7 @@ exports.default = Apply;
 
 /***/ }),
 
-/***/ 247:
+/***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -362,7 +793,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -488,7 +919,7 @@ exports.default = FaqSection;
 
 /***/ }),
 
-/***/ 248:
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -498,7 +929,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -563,7 +994,7 @@ exports.default = Hero;
 
 /***/ }),
 
-/***/ 249:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -573,19 +1004,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WhatIsItSection = __webpack_require__(250);
+var _WhatIsItSection = __webpack_require__(277);
 
 var _WhatIsItSection2 = _interopRequireDefault(_WhatIsItSection);
 
-var _Hero = __webpack_require__(248);
+var _Hero = __webpack_require__(275);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _FaqSection = __webpack_require__(247);
+var _FaqSection = __webpack_require__(274);
 
 var _FaqSection2 = _interopRequireDefault(_FaqSection);
 
@@ -605,7 +1036,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 250:
+/***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -615,7 +1046,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -661,7 +1092,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 251:
+/***/ 278:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -671,11 +1102,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(592);
+__webpack_require__(619);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -691,7 +1122,7 @@ exports.default = NotFound;
 
 /***/ }),
 
-/***/ 252:
+/***/ 279:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -701,15 +1132,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(108);
+var _Heart = __webpack_require__(110);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(109);
+var _HrefLinks = __webpack_require__(84);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -756,7 +1187,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 253:
+/***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -766,7 +1197,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -784,7 +1215,7 @@ exports.default = FinishedSchedule;
 
 /***/ }),
 
-/***/ 254:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -794,15 +1225,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(108);
+var _Heart = __webpack_require__(110);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(109);
+var _HrefLinks = __webpack_require__(84);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -849,7 +1280,7 @@ exports.default = Offseason;
 
 /***/ }),
 
-/***/ 255:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -861,27 +1292,27 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Schedule = Schedule;
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(107);
+var _Header = __webpack_require__(109);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _TakingApplications = __webpack_require__(256);
+var _TakingApplications = __webpack_require__(283);
 
 var _TakingApplications2 = _interopRequireDefault(_TakingApplications);
 
-var _Offseason = __webpack_require__(254);
+var _Offseason = __webpack_require__(281);
 
 var _Offseason2 = _interopRequireDefault(_Offseason);
 
-var _FinishedSchedule = __webpack_require__(253);
+var _FinishedSchedule = __webpack_require__(280);
 
 var _FinishedSchedule2 = _interopRequireDefault(_FinishedSchedule);
 
-var _ApplicationsClosed = __webpack_require__(252);
+var _ApplicationsClosed = __webpack_require__(279);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -944,7 +1375,7 @@ exports.default = Schedule;
 
 /***/ }),
 
-/***/ 256:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -954,15 +1385,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(108);
+var _Heart = __webpack_require__(110);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(109);
+var _HrefLinks = __webpack_require__(84);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1009,21 +1440,21 @@ exports.default = TakingApplications;
 
 /***/ }),
 
-/***/ 257:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(13);
+var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(106);
+var _reactDom = __webpack_require__(108);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(239);
+var _App = __webpack_require__(248);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -1033,21 +1464,21 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 460:
+/***/ 487:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(461)(true);
+exports = module.exports = __webpack_require__(488)(true);
 // Module
 exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\r\n  padding: 200px;\r\n  font-size: 3rem;\r\n\r\n}\r\n"]}]);
 
 
 /***/ }),
 
-/***/ 592:
+/***/ 619:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(460);
+var content = __webpack_require__(487);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1061,7 +1492,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(593)(content, options);
+var update = __webpack_require__(620)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1092,6 +1523,22 @@ if(false) {
 	module.hot.dispose(function() { update(); });
 }
 
+/***/ }),
+
+/***/ 84:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var HrefLinks = exports.HrefLinks = {
+  twitter: 'https://twitter.com/RetroBlockParty',
+  discord: 'https://discord.gg/ppYfqHA '
+};
+
 /***/ })
 
-},[257]);
+},[284]);

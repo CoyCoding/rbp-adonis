@@ -75,7 +75,7 @@ export default class ApplicationsOpen extends Component{
         backup: !this.state.backup
 
     })
-    })
+
   }
 
   handleSubmit = async (submitEvent) =>{
@@ -91,6 +91,7 @@ export default class ApplicationsOpen extends Component{
           console.log(res)
       });
     } catch (error){
+      console.log(error)
       self.props.history.push('/apply-error');
       //window.scrollTo(0, 0);
     }
