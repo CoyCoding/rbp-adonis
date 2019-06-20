@@ -6,7 +6,7 @@ class ApplicationController {
     if(appStatus != 'takingApplications'){
       return view.render('welcome', {appStatus: appStatus});
     }else{
-          return view.render('apply', {appStatus: appStatus});
+          return view.render('welcome', {appStatus: appStatus});
     }
 
   }

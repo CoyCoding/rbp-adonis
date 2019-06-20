@@ -31,7 +31,7 @@ export default class App extends Component {
 				<Header/>
 				<Switch>
 
-					<Route exact  path="/" component={Home}/>
+					<Route exact  path="/" component={Home} />
 					<Route exact path="/schedule" render={props =>
 						<Schedule {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
 					}

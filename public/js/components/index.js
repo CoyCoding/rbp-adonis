@@ -386,9 +386,11 @@ var ApplicationsOpen = function (_Component) {
       try {
         _axios2.default.post('/apply', data).then(function (res) {
           self.props.history.push('/');
+          window.scrollTo(0, 0);
         });
       } catch (error) {
-        self.props.history.push('/error');
+        self.props.history.push('/apply-error');
+        window.scrollTo(0, 0);
       }
     };
 
