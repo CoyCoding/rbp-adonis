@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class AvailableDate extends Model {
+  application(){
+    return this.belongsTo('App/Model/Application')
+  }
 }
 
 module.exports = AvailableDate

@@ -4,6 +4,9 @@
 const Model = use('Model')
 
 class EventTime extends Model {
+  event(){
+    return this.belongsTo('App/Model/Event')
+  }
 }
 
 module.exports = EventTime

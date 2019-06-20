@@ -11,7 +11,7 @@ class Event extends Model {
     return this.hasMany('App/Model/EventTime')
   }
   applications(){
-      return this.hasMany('App/Model/Application')
+      return this.hasMany('App/Model/Event')
   }
 }
 
