@@ -14,8 +14,6 @@ class ApplicationsSchema extends Schema {
       table.string('game_2').notNullable()
       table.string('donation_incentive')
       table.text('info').notNullable()
-      table.int('available_dates_id').unsigned().references('id').inTable('available_dates')
-      table.int('available_times_id').unsigned().references('id').inTable('available_times')
       table.boolean('backup')
       table.integer('event_id').unsigned().references('id').inTable('Events')
       table.timestamps()

@@ -8,6 +8,7 @@ class AvailableTimesSchema extends Schema {
     this.create('available_times', (table) => {
       table.increments()
       table.string('time').notNullable()
+      table.integer('application_id').unsigned().references('id').inTable('applications')
       table.timestamps()
     })
   }
