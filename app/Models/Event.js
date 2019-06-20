@@ -4,6 +4,15 @@
 const Model = use('Model')
 
 class Event extends Model {
+  eventDates(){
+    return this.hasMany('App/Model/EventDate')
+  }
+  eventTimes(){
+    return this.hasMany('App/Model/EventTime')
+  }
+  applications(){
+      return this.hasMany('App/Model/Application')
+  }
 }
 
 module.exports = Event
