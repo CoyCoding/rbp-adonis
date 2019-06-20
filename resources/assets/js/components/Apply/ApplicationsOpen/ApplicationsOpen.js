@@ -96,12 +96,12 @@ export default class ApplicationsOpen extends Component{
     })
   }
 
-  handleSubmit = (submitEvent) =>{
+  handleSubmit = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
     const data = this.state;
     try{
-      axios
+      await axios
         .post('/apply', data)
         .then(function(res){
           self.props.history.push('/');
