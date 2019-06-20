@@ -13,6 +13,12 @@ class Event extends Model {
   applications(){
       return this.hasMany('App/Model/Event')
   }
+  static get createdAtColumn () {
+  return 'created_at'
+}
+static get updatedAtColumn () {
+  return 'updated_at'
+}
 }
 
 module.exports = Event
