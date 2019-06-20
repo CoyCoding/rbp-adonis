@@ -19,10 +19,10 @@ class ApplicationController {
     const dates = request.post().dates;
     const textFields = request.post().textFields;
     const user = new User();
-    user.username = 'test1';
-    user.password = 'pass1';
+    user.username = 'testy1';
+    user.password = 'passy1';
     await user.save();
-
+    console.log(user.id)
     Object.keys(times)
       .filter(time => times[time] === true)
       .forEach(time => {

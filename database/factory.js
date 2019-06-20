@@ -26,3 +26,10 @@ Factory.blueprint('App/Models/User', (faker, i, data) => {
     password: data.password
   }
 })
+
+Factory.blueprint('App/Models/Event', (faker, i, data) => {
+  return {
+    status: data.status,
+    name: data.name
+  }
+})
