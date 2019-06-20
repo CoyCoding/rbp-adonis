@@ -8,7 +8,7 @@ class AvailableDatesSchema extends Schema {
     this.create('available_dates', (table) => {
       table.increments()
       table.string('date').notNullable()
-          table.integer('application_id').unsigned().references('id').inTable('applications')
+      table.integer('application_id').unsigned().references('id').inTable('applications')
       table.timestamps()
     })
   }

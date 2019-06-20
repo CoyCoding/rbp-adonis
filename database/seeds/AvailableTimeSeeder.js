@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| DatabaseSeeder
+| AvailableTimeSeeder
 |--------------------------------------------------------------------------
 |
 | Make use of the Factory instance to seed database with dummy data or
@@ -13,10 +13,17 @@
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
-class DatabaseSeeder {
-  async run () {
-    
+class AvailableTimeSeeder {
+  async run() {
+    await Factory.model('App/Models/AvailableTime').create({
+      time: '12:00 AM - 2:00 AM',
+      application_id: 1
+    })
+    await Factory.model('App/Models/AvailableTime').create({
+      time: '2:00 AM - 4:00 AM',
+      application_id: 1
+    })
   }
 }
 
-module.exports = DatabaseSeeder
+module.exports = AvailableTimeSeeder
