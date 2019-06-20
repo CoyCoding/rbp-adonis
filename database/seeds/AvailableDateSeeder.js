@@ -29,12 +29,14 @@ class AvailableDateSeeder {
       backup: false,
       event_id: 1
     })
+
     await Factory.model('App/Models/AvailableDate').create(
       {
         date: 'june 1',
         application_id: 1
       }
     )
+
     await Factory.model('App/Models/AvailableDate').create(
       {
         date: 'aug 1',

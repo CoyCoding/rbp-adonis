@@ -28,7 +28,7 @@ class ApplicationController {
       .forEach(time => {
         console.log(time, "is selected.");
       })
-
+      return 'yes'
   }
 }
 

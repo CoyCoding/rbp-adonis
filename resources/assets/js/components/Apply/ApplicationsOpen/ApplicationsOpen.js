@@ -56,13 +56,6 @@ export default class ApplicationsOpen extends Component{
               [name]: !this.state.dates[name]
             }
 
-          },
-          () => {
-            Object.keys(this.state.dates)
-              .filter(date => this.state.dates[date])
-              .forEach(date => {
-                console.log(date, "is selected.");
-              });
           })
       }
 
@@ -74,12 +67,6 @@ export default class ApplicationsOpen extends Component{
               ...this.state.times,
               [name]: !this.state.times[name]
             }
-        },
-        ()=>{Object.keys(this.state.times)
-          .filter(time => this.state.times[time])
-          .forEach(time => {
-            console.log(time, "is selected.");
-          })
         })
       }
 
@@ -87,12 +74,7 @@ export default class ApplicationsOpen extends Component{
     this.setState({
         backup: !this.state.backup
 
-    },
-    ()=>{Object.keys(this.state.times)
-      .filter(time => this.state.times[time])
-      .forEach(time => {
-        console.log(time, "is selected.");
-      })
+    })
     })
   }
 
@@ -104,13 +86,13 @@ export default class ApplicationsOpen extends Component{
       await axios
         .post('/apply', data)
         .then(function(res){
-          self.props.history.push('/');
-          window.scrollTo(0, 0);
-          
+          // self.props.history.push('/');
+          // window.scrollTo(0, 0);
+          console.log(res)
       });
     } catch (error){
       self.props.history.push('/apply-error');
-      window.scrollTo(0, 0);
+      //window.scrollTo(0, 0);
     }
 
   }
