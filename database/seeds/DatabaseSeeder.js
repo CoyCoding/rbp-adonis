@@ -15,10 +15,10 @@ const Factory = use('Factory')
 
 class DatabaseSeeder {
   async run () {
-    await Factory.model('App/Models/ScheduleStatus').create({status: 'takingApplications'});
-    await Factory.model('App/Models/ScheduleStatus').create({status: 'offseason'});
-    await Factory.model('App/Models/ScheduleStatus').create({status: 'applicationsClosed'});
-    await Factory.model('App/Models/ScheduleStatus').create({status: 'scheduleFinished'});
+    // await Factory.model('App/Models/ScheduleStatus').create({status: 'takingApplications'});
+    // await Factory.model('App/Models/ScheduleStatus').create({status: 'offseason'});
+    // await Factory.model('App/Models/ScheduleStatus').create({status: 'applicationsClosed'});
+    // await Factory.model('App/Models/ScheduleStatus').create({status: 'scheduleFinished'});
   }
 }
 

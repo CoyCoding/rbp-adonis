@@ -106,6 +106,7 @@ export default class ApplicationsOpen extends Component{
         .then(function(res){
           self.props.history.push('/');
           window.scrollTo(0, 0);
+          
       });
     } catch (error){
       self.props.history.push('/apply-error');
