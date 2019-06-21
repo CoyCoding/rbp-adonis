@@ -297,6 +297,8 @@ var _Checkbox = __webpack_require__(272);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
+var _Validation = __webpack_require__(284);
+
 var _history = __webpack_require__(139);
 
 var _axios = __webpack_require__(253);
@@ -331,29 +333,40 @@ var ApplicationsOpen = function (_Component) {
 
     _this.handleTextChange = function (event) {
       var name = event.target.name;
-
+      //set state of current textbox to user input
       _this.setState({
         textFields: _extends({}, _this.state.textFields, _defineProperty({}, name, event.target.value))
-
+        //set the error state based on the new state
+        //Maybe change to on submit
       }, function () {
-        console.log(_this.state);
+        _this.setState({
+          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateText)(name, _this.state.textFields[name])))
+        }, function () {
+          console.log(_this.state.formErrors[name]);
+        });
       });
     };
 
     _this.handleDateChange = function (event) {
       var name = event.target.name;
-
       _this.setState({
         dates: _extends({}, _this.state.dates, _defineProperty({}, name, !_this.state.dates[name]))
 
-      }, console.log('test'));
+      }, function () {
+        _this.setState({
+          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateCheckboxes)('dates', _this.state.dates)))
+        });
+      });
     };
 
     _this.handleTimeChange = function (event) {
       var name = event.target.name;
-
       _this.setState({
         times: _extends({}, _this.state.times, _defineProperty({}, name, !_this.state.times[name]))
+      }, function () {
+        _this.setState({
+          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateCheckboxes)('times', _this.state.times)))
+        });
       });
     };
 
@@ -456,16 +469,7 @@ var ApplicationsOpen = function (_Component) {
         whatDoYouLike: ""
       },
       backup: false,
-      formErrors: {
-        discordName: "We need you to have a discord for event information",
-        firstGame: "You have to have a game to play",
-        secondGame: "You have to have a back up game",
-        twitchName: "We need your twitch name to check out your content",
-        twitterName: "",
-        whatDoYouLike: "Come on, at least say you think FTC is sexy",
-        dates: "We need to know what day(s) you are available",
-        times: "You need to have at least available time slot"
-      }
+      formErrors: {}
     };
     return _this;
   }
@@ -473,15 +477,18 @@ var ApplicationsOpen = function (_Component) {
   _createClass(ApplicationsOpen, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
+      console.log(this.state.formErrorsMessages);
       this.setState({
-        //Set the value of the all the dates in the date array to false
+        //Set the value of current event dates
         dates: DATES.reduce(function (dates, date) {
           return _extends({}, dates, _defineProperty({}, date, false));
         }, {}),
-        //Set the value of the all the times in the date array to false
+        //Set the value of the current event times
         times: TIMES.reduce(function (times, time) {
           return _extends({}, times, _defineProperty({}, time, false));
-        }, {})
+        }, {}),
+        //Set all form Error Messages
+        formErrors: (0, _Validation.getApplicationErrors)()
       });
     }
   }, {
@@ -1134,7 +1141,7 @@ var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(619);
+__webpack_require__(620);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1474,6 +1481,56 @@ exports.default = TakingApplications;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getApplicationErrors = getApplicationErrors;
+exports.validateText = validateText;
+exports.validateCheckboxes = validateCheckboxes;
+var validationMessages = {
+  discordName: "We need you to have a discord for event information",
+  firstGame: "You have to have a game to play",
+  secondGame: "You have to have a back up game",
+  twitchName: "We need your twitch name to check out your content",
+  whatDoYouLike: "Come on, at least say you think FTC is sexy",
+  dates: "We need to know what day(s) you are available",
+  times: "You need to have at least available time slot"
+};
+
+function getApplicationErrors() {
+  return validationMessages;
+}
+
+function validateText(textFormName, textFormValue) {
+  //return empty string for no error
+  if (textFormValue) {
+    return '';
+    //else add form Error message
+  } else {
+    return validationMessages[textFormName];
+  }
+}
+
+function validateCheckboxes(checkboxGroupName, checkboxGroup) {
+  //For each checkbox in group, if at least one is true validate
+  if (Object.keys(checkboxGroup).find(function (checkbox) {
+    return checkboxGroup[checkbox] === true;
+  })) {
+    return '';
+    //else return error message
+  } else {
+    return validationMessages[checkboxGroupName];
+  }
+}
+
+/***/ }),
+
+/***/ 285:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _react = __webpack_require__(11);
 
 var _react2 = _interopRequireDefault(_react);
@@ -1492,21 +1549,21 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 487:
+/***/ 488:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(488)(true);
+exports = module.exports = __webpack_require__(489)(true);
 // Module
 exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\r\n  padding: 200px;\r\n  font-size: 3rem;\r\n\r\n}\r\n"]}]);
 
 
 /***/ }),
 
-/***/ 619:
+/***/ 620:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(487);
+var content = __webpack_require__(488);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1520,7 +1577,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(620)(content, options);
+var update = __webpack_require__(621)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1569,4 +1626,4 @@ var HrefLinks = exports.HrefLinks = {
 
 /***/ })
 
-},[284]);
+},[285]);

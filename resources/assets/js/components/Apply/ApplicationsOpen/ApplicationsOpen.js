@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {HrefLinks} from '../.././Utils/HrefLinks';
 import Checkbox from './Checkbox';
+import {validateText, getApplicationErrors, validateCheckboxes} from '../.././Utils/Validation'
 import { createHashHistory } from 'history'
 import axios from 'axios';
 
@@ -25,68 +26,80 @@ export default class ApplicationsOpen extends Component {
         whatDoYouLike: "",
       },
       backup: false,
-      formErrors: {
-        discordName: "We need you to have a discord for event information",
-        firstGame: "You have to have a game to play",
-        secondGame: "You have to have a back up game",
-        twitchName: "We need your twitch name to check out your content",
-        twitterName: "",
-        whatDoYouLike: "Come on, at least say you think FTC is sexy",
-        dates: "We need to know what day(s) you are available",
-        times:"You need to have at least available time slot",
-      }
+      formErrors: {},
     };
   }
 componentWillMount() {
+  console.log(this.state.formErrorsMessages)
   this.setState({
-      //Set the value of the all the dates in the date array to false
+      //Set the value of current event dates
       dates: DATES.reduce((dates, date) => ({
         ...dates,
         [date]: false
       }), {}),
-      //Set the value of the all the times in the date array to false
+      //Set the value of the current event times
       times: TIMES.reduce((times, time) => ({
         ...times,
         [time]: false
-      }), {})
+      }), {}),
+      //Set all form Error Messages
+      formErrors: getApplicationErrors()
     })
 }
 
   handleTextChange = (event) => {
-  const name = event.target.name;
-
-  this.setState({
+    const name = event.target.name;
+    //set state of current textbox to user input
+    this.setState({
       textFields: {
         ...this.state.textFields,
         [name]: event.target.value
       }
-
-    },
-    () => {
-      console.log(this.state)
-    })
+    //set the error state based on the new state
+    //Maybe change to on submit
+    }, () => {
+      this.setState({
+        formErrors: {
+          ...this.state.formErrors,
+          [name]: validateText(name, this.state.textFields[name])
+        }
+      }, ()=> {console.log(this.state.formErrors[name])})
+  })
 }
 
   handleDateChange = (event) => {
         const name = event.target.name;
-
         this.setState({
             dates: {
               ...this.state.dates,
               [name]: !this.state.dates[name]
             }
 
-          }, console.log('test'))
+          }, ()=>{
+            this.setState({
+              formErrors: {
+                ...this.state.formErrors,
+                [name]: validateCheckboxes('dates', this.state.dates)
+              }
+            })
+          })
       }
 
   handleTimeChange = (event) =>{
         const name  = event.target.name;
-
         this.setState({
             times:{
               ...this.state.times,
               [name]: !this.state.times[name]
             }
+        }, ()=>{
+          this.setState({
+            formErrors: {
+              ...this.state.formErrors,
+              [name]: validateCheckboxes('times', this.state.times)
+            }
+          })
+
         })
       }
 
