@@ -354,7 +354,9 @@ var ApplicationsOpen = function (_Component) {
 
       }, function () {
         _this.setState({
-          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateCheckboxes)('dates', _this.state.dates)))
+          formErrors: _extends({}, _this.state.formErrors, {
+            dates: (0, _Validation.validateCheckboxes)('dates', _this.state.dates)
+          })
         });
       });
     };
@@ -365,7 +367,9 @@ var ApplicationsOpen = function (_Component) {
         times: _extends({}, _this.state.times, _defineProperty({}, name, !_this.state.times[name]))
       }, function () {
         _this.setState({
-          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateCheckboxes)('times', _this.state.times)))
+          formErrors: _extends({}, _this.state.formErrors, {
+            times: (0, _Validation.validateCheckboxes)('times', _this.state.times)
+          })
         });
       });
     };
@@ -379,42 +383,48 @@ var ApplicationsOpen = function (_Component) {
 
     _this.handleSubmit = function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(submitEvent) {
-        var self;
+        var self, errorArr, getErrors;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
+                getErrors = function getErrors() {
+                  //for each input name in form errors filter and return all inputs with errors
+                  return Object.keys(self.state.formErrors).filter(function (error) {
+                    return self.state.formErrors[error].length > 0;
+                  });
+                };
+
                 submitEvent.preventDefault();
                 self = _this;
-                // if(formValid(self.state.))
+                errorArr = getErrors();
 
-                console.log(self.state);
-                _context.prev = 3;
-                _context.next = 6;
-                return _axios2.default.post('/apply', self.state).then(function (res) {
-                  // self.props.history.push('/');
-                  // window.scrollTo(0, 0);
-                  console.log(res);
-                });
+                if (errorArr.length === 0) {
+                  try {
+                    // console.log('posting')
+                    // await axios
+                    //   .post('/apply', self.state)
+                    //   .then(function(res){
+                    //     // self.props.history.push('/');
+                    //     // window.scrollTo(0, 0);
+                    //     console.log(res)
+                    // });
+                  } catch (error) {
+                    console.log(error);
+                    self.props.history.push('/apply-error');
+                    //window.scrollTo(0, 0);
+                  }
+                } else {
+                  // Show Errors on bad inputs
+                  console.log(errorArr);
+                }
 
-              case 6:
-                _context.next = 12;
-                break;
-
-              case 8:
-                _context.prev = 8;
-                _context.t0 = _context['catch'](3);
-
-                console.log(_context.t0);
-                self.props.history.push('/apply-error');
-                //window.scrollTo(0, 0);
-
-              case 12:
+              case 5:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[3, 8]]);
+        }, _callee, _this2);
       }));
 
       return function (_x) {
@@ -477,7 +487,6 @@ var ApplicationsOpen = function (_Component) {
   _createClass(ApplicationsOpen, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      console.log(this.state.formErrorsMessages);
       this.setState({
         //Set the value of current event dates
         dates: DATES.reduce(function (dates, date) {

@@ -29,22 +29,22 @@ export default class ApplicationsOpen extends Component {
       formErrors: {},
     };
   }
+
 componentWillMount() {
-  console.log(this.state.formErrorsMessages)
   this.setState({
-      //Set the value of current event dates
-      dates: DATES.reduce((dates, date) => ({
-        ...dates,
-        [date]: false
-      }), {}),
-      //Set the value of the current event times
-      times: TIMES.reduce((times, time) => ({
-        ...times,
-        [time]: false
-      }), {}),
-      //Set all form Error Messages
-      formErrors: getApplicationErrors()
-    })
+    //Set the value of current event dates
+    dates: DATES.reduce((dates, date) => ({
+      ...dates,
+      [date]: false
+    }), {}),
+    //Set the value of the current event times
+    times: TIMES.reduce((times, time) => ({
+      ...times,
+      [time]: false
+    }), {}),
+    //Set all form Error Messages
+    formErrors: getApplicationErrors()
+  })
 }
 
   handleTextChange = (event) => {
@@ -79,7 +79,7 @@ componentWillMount() {
             this.setState({
               formErrors: {
                 ...this.state.formErrors,
-                [name]: validateCheckboxes('dates', this.state.dates)
+                dates: validateCheckboxes('dates', this.state.dates)
               }
             })
           })
@@ -96,7 +96,7 @@ componentWillMount() {
           this.setState({
             formErrors: {
               ...this.state.formErrors,
-              [name]: validateCheckboxes('times', this.state.times)
+              times: validateCheckboxes('times', this.state.times)
             }
           })
 
@@ -114,20 +114,33 @@ componentWillMount() {
   handleSubmit = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
-    // if(formValid(self.state.))
-    console.log(self.state)
-    try{
-      await axios
-        .post('/apply', self.state)
-        .then(function(res){
-          // self.props.history.push('/');
-          // window.scrollTo(0, 0);
-          console.log(res)
-      });
-    } catch (error){
-      console.log(error)
-      self.props.history.push('/apply-error');
-      //window.scrollTo(0, 0);
+    const errorArr = getErrors();
+    if(errorArr.length === 0){
+      try{
+        // console.log('posting')
+        // await axios
+        //   .post('/apply', self.state)
+        //   .then(function(res){
+        //     // self.props.history.push('/');
+        //     // window.scrollTo(0, 0);
+        //     console.log(res)
+        // });
+      } catch (error){
+        console.log(error)
+        self.props.history.push('/apply-error');
+        //window.scrollTo(0, 0);
+      }
+    }
+    else{
+      // Show Errors on bad inputs
+      console.log(errorArr)
+    }
+    function getErrors() {
+      //for each input name in form errors filter and return all inputs with errors
+      return Object.keys(self.state.formErrors)
+        .filter((error) => {
+          return self.state.formErrors[error].length > 0
+        })
     }
 
   }
