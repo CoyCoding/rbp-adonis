@@ -327,7 +327,6 @@ var ApplicationsOpen = function (_Component) {
 
     _classCallCheck(this, ApplicationsOpen);
 
-    //Set the value of the all the dates in the date array to false
     var _this = _possibleConstructorReturn(this, (ApplicationsOpen.__proto__ || Object.getPrototypeOf(ApplicationsOpen)).call(this, props));
 
     _this.handleTextChange = function (event) {
@@ -347,7 +346,7 @@ var ApplicationsOpen = function (_Component) {
       _this.setState({
         dates: _extends({}, _this.state.dates, _defineProperty({}, name, !_this.state.dates[name]))
 
-      });
+      }, console.log('test'));
     };
 
     _this.handleTimeChange = function (event) {
@@ -367,17 +366,19 @@ var ApplicationsOpen = function (_Component) {
 
     _this.handleSubmit = function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(submitEvent) {
-        var self, data;
+        var self;
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 submitEvent.preventDefault();
                 self = _this;
-                data = _this.state;
+                // if(formValid(self.state.))
+
+                console.log(self.state);
                 _context.prev = 3;
                 _context.next = 6;
-                return _axios2.default.post('/apply', data).then(function (res) {
+                return _axios2.default.post('/apply', self.state).then(function (res) {
                   // self.props.history.push('/');
                   // window.scrollTo(0, 0);
                   console.log(res);
@@ -443,20 +444,47 @@ var ApplicationsOpen = function (_Component) {
     };
 
     _this.state = {
-      dates: DATES.reduce(function (dates, date) {
-        return _extends({}, dates, _defineProperty({}, date, false));
-      }, {}),
-      //Set the value of the all the times in the date array to false
-      times: TIMES.reduce(function (times, time) {
-        return _extends({}, times, _defineProperty({}, time, false));
-      }, {}),
-      textFields: {},
-      backup: false
+      dates: '',
+      times: '',
+      textFields: {
+        discordName: "",
+        donationIncentive: "",
+        firstGame: "",
+        secondGame: "",
+        twitchName: "",
+        twitterName: "",
+        whatDoYouLike: ""
+      },
+      backup: false,
+      formErrors: {
+        discordName: "We need you to have a discord for event information",
+        firstGame: "You have to have a game to play",
+        secondGame: "You have to have a back up game",
+        twitchName: "We need your twitch name to check out your content",
+        twitterName: "",
+        whatDoYouLike: "Come on, at least say you think FTC is sexy",
+        dates: "We need to know what day(s) you are available",
+        times: "You need to have at least available time slot"
+      }
     };
     return _this;
   }
 
   _createClass(ApplicationsOpen, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.setState({
+        //Set the value of the all the dates in the date array to false
+        dates: DATES.reduce(function (dates, date) {
+          return _extends({}, dates, _defineProperty({}, date, false));
+        }, {}),
+        //Set the value of the all the times in the date array to false
+        times: TIMES.reduce(function (times, time) {
+          return _extends({}, times, _defineProperty({}, time, false));
+        }, {})
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(

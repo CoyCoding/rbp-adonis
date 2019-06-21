@@ -9,27 +9,47 @@ const DATES = ['june 28', 'june 29'];
 const TIMES = ['12:00 AM - 2:00 AM','2:00 AM - 4:00 AM','4:00 AM - 6:00 AM','6:00 AM - 8:00 AM','8:00 AM - 10:00 AM','10:00 AM - 12:00 PM','12:00 PM - 2:00 PM','2:00 PM - 4:00 PM','4:00 PM - 6:00 PM','6:00 PM - 8:00 PM','8:00 PM - 10:00 PM','10:00 PM - 12:00 AM'];
 
 
-export default class ApplicationsOpen extends Component{
-  constructor(props){
+export default class ApplicationsOpen extends Component {
+  constructor(props) {
     super(props);
-    //Set the value of the all the dates in the date array to false
-    this.state={
-      dates: DATES.reduce((dates,date)=>({
+    this.state = {
+      dates: '',
+      times: '',
+      textFields: {
+        discordName: "",
+        donationIncentive: "",
+        firstGame: "",
+        secondGame: "",
+        twitchName: "",
+        twitterName: "",
+        whatDoYouLike: "",
+      },
+      backup: false,
+      formErrors: {
+        discordName: "We need you to have a discord for event information",
+        firstGame: "You have to have a game to play",
+        secondGame: "You have to have a back up game",
+        twitchName: "We need your twitch name to check out your content",
+        twitterName: "",
+        whatDoYouLike: "Come on, at least say you think FTC is sexy",
+        dates: "We need to know what day(s) you are available",
+        times:"You need to have at least available time slot",
+      }
+    };
+  }
+componentWillMount() {
+  this.setState({
+      //Set the value of the all the dates in the date array to false
+      dates: DATES.reduce((dates, date) => ({
         ...dates,
         [date]: false
-      }),
-      {}
-    ),
-    //Set the value of the all the times in the date array to false
-    times: TIMES.reduce((times, time)=>({
-      ...times,
-      [time]: false
-    }),
-    {}
-  ),
-  textFields: {},
-  backup: false
-  };
+      }), {}),
+      //Set the value of the all the times in the date array to false
+      times: TIMES.reduce((times, time) => ({
+        ...times,
+        [time]: false
+      }), {})
+    })
 }
 
   handleTextChange = (event) => {
@@ -56,7 +76,7 @@ export default class ApplicationsOpen extends Component{
               [name]: !this.state.dates[name]
             }
 
-          })
+          }, console.log('test'))
       }
 
   handleTimeChange = (event) =>{
@@ -81,10 +101,11 @@ export default class ApplicationsOpen extends Component{
   handleSubmit = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
-    const data = this.state;
+    // if(formValid(self.state.))
+    console.log(self.state)
     try{
       await axios
-        .post('/apply', data)
+        .post('/apply', self.state)
         .then(function(res){
           // self.props.history.push('/');
           // window.scrollTo(0, 0);

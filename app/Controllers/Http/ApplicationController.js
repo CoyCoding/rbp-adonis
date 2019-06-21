@@ -20,6 +20,7 @@ class ApplicationController {
     const activeEventId = 1;
     const formData = request.post();
     //create applicationData from form
+    console.log(formData)
     const applicationData = {
       twitch_name: formData.textFields.twitchName,
       twitter_name: formData.textFields.twitterName,
@@ -47,8 +48,8 @@ class ApplicationController {
 
       dbTrx.commit();
     }catch (error){
-      console.log(error)
-      return error;
+      //console.log(error)
+      return 'error';
     }
 
     function buildDateSchema(datesMap, id){
