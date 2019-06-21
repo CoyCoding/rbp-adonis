@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -99,7 +99,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -133,7 +133,49 @@ exports.default = Heart;
 
 /***/ }),
 
-/***/ 248:
+/***/ 169:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(10);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Checkbox = function Checkbox(_ref) {
+  var label = _ref.label,
+      isSelected = _ref.isSelected,
+      onCheckboxChange = _ref.onCheckboxChange;
+  return _react2.default.createElement(
+    "div",
+    { className: "form-check" },
+    _react2.default.createElement(
+      "label",
+      null,
+      _react2.default.createElement("input", {
+        type: "checkbox",
+        name: label,
+        checked: isSelected,
+        onChange: onCheckboxChange,
+        className: "form-check-input"
+      }),
+      label
+    )
+  );
+};
+
+exports.default = Checkbox;
+
+/***/ }),
+
+/***/ 249:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -147,7 +189,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -157,19 +199,19 @@ var _Header = __webpack_require__(109);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(276);
+var _Home = __webpack_require__(277);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _NotFound = __webpack_require__(278);
+var _NotFound = __webpack_require__(279);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _Schedule = __webpack_require__(282);
+var _Schedule = __webpack_require__(283);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
-var _Apply = __webpack_require__(273);
+var _Apply = __webpack_require__(274);
 
 var _Apply2 = _interopRequireDefault(_Apply);
 
@@ -240,7 +282,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 270:
+/***/ 271:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -251,7 +293,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ApplicationsClosed = ApplicationsClosed;
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -273,7 +315,240 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 271:
+/***/ 272:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ApplicationForm = ApplicationForm;
+
+var _react = __webpack_require__(10);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Checkbox = __webpack_require__(169);
+
+var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function ApplicationForm(props) {
+  var createDateCheckbox = function createDateCheckbox(date) {
+    return _react2.default.createElement(_Checkbox2.default, {
+      label: date,
+      isSelected: props.dates[date],
+      onCheckboxChange: props.handleDateChange,
+      key: date
+    });
+  };
+
+  var createTimeCheckbox = function createTimeCheckbox(time) {
+    return _react2.default.createElement(_Checkbox2.default, {
+      label: time,
+      isSelected: props.times[time],
+      onCheckboxChange: props.handleTimeChange,
+      key: time
+    });
+  };
+
+  var createBackupCheckbox = function createBackupCheckbox(backup) {
+    return _react2.default.createElement(_Checkbox2.default, {
+      label: 'yes',
+      isSelected: props.backup,
+      onCheckboxChange: props.handleBackupChange
+    });
+  };
+
+  var createDateCheckboxes = function createDateCheckboxes() {
+    return props.dates.map(createDateCheckbox);
+  };
+  var createTimeCheckboxes = function createTimeCheckboxes() {
+    return props.times.map(createTimeCheckbox);
+  };
+  return _react2.default.createElement(
+    'div',
+    { className: 'application-form' },
+    _react2.default.createElement(
+      'div',
+      { className: 'form-header' },
+      _react2.default.createElement(
+        'h5',
+        null,
+        'Please complete the form below'
+      ),
+      _react2.default.createElement(
+        'h5',
+        null,
+        '*indicates a required field'
+      )
+    ),
+    _react2.default.createElement(
+      'div',
+      { className: 'form-wrapper' },
+      _react2.default.createElement(
+        'form',
+        { onSubmit: props.handleSubmit },
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'twitchName' },
+            'Twitch Link*'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'Your profile name exactly as it appears on twitch.'
+          ),
+          _react2.default.createElement('input', { name: 'twitchName', onChange: props.handleTextChange, type: 'text', placeholder: 'https://www.twitch.tv/Batman' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'discordName' },
+            'Discord Name*'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'Please make sure you\'ve joined the official RBP Discord so we can message you easily.'
+          ),
+          _react2.default.createElement('input', { name: 'discordName', onChange: props.handleTextChange, type: 'text', placeholder: 'Batman' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'twitterName' },
+            'Twitter Name'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'Please enter your Twitter name so we may easily find and @ you during your segment.'
+          ),
+          _react2.default.createElement('input', { name: 'twitterName', onChange: props.handleTextChange, type: 'text', placeholder: 'Batman' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'firstGame' },
+            'Game 1*'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'The first game you will play during your segment.'
+          ),
+          _react2.default.createElement('input', { name: 'firstGame', onChange: props.handleTextChange, type: 'text', placeholder: 'Super Mario Bro. 2 BBy' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'secondGame' },
+            'Game 2*'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'The second game you will play during your segment.'
+          ),
+          _react2.default.createElement('input', { name: 'secondGame', onChange: props.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'h5',
+            null,
+            'Available Dates*'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'checkbox-section' },
+            createDateCheckboxes()
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'h5',
+            null,
+            'Available Times*'
+          ),
+          _react2.default.createElement(
+            'p',
+            { className: 'description' },
+            'All Times are in Eastern Time, the more availability you have, the higher chance you have to get into the event!'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'checkbox-section' },
+            createTimeCheckboxes()
+          )
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'donationIncentive' },
+            'Donation Incentive'
+          ),
+          _react2.default.createElement('input', { name: 'donationIncentive', onChange: props.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'label',
+            { htmlFor: 'whatDoYouLike' },
+            'Why would you like to participate in RetroBlockParty? *'
+          ),
+          _react2.default.createElement('textarea', { name: 'whatDoYouLike', onChange: props.handleTextChange, type: 'text', placeholder: 'I like the food' })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'form-item' },
+          _react2.default.createElement(
+            'h5',
+            null,
+            'Would you be willing to be available as a backup streamer?'
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'checkbox-section' },
+            createBackupCheckbox()
+          )
+        ),
+        _react2.default.createElement(
+          'button',
+          { name: 'submint', type: 'submit' },
+          ' submit'
+        )
+      )
+    )
+  );
+}
+
+exports.default = ApplicationForm;
+
+/***/ }),
+
+/***/ 273:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -287,21 +562,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
 var _HrefLinks = __webpack_require__(84);
 
-var _Checkbox = __webpack_require__(272);
+var _Checkbox = __webpack_require__(169);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
-var _Validation = __webpack_require__(284);
+var _ApplicationForm = __webpack_require__(272);
+
+var _ApplicationForm2 = _interopRequireDefault(_ApplicationForm);
+
+var _Validation = __webpack_require__(285);
 
 var _history = __webpack_require__(139);
 
-var _axios = __webpack_require__(253);
+var _axios = __webpack_require__(254);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -341,8 +620,6 @@ var ApplicationsOpen = function (_Component) {
       }, function () {
         _this.setState({
           formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateText)(name, _this.state.textFields[name])))
-        }, function () {
-          console.log(_this.state.formErrors[name]);
         });
       });
     };
@@ -377,7 +654,6 @@ var ApplicationsOpen = function (_Component) {
     _this.handleBackupChange = function (event) {
       _this.setState({
         backup: !_this.state.backup
-
       });
     };
 
@@ -399,72 +675,51 @@ var ApplicationsOpen = function (_Component) {
                 self = _this;
                 errorArr = getErrors();
 
-                if (errorArr.length === 0) {
-                  try {
-                    // console.log('posting')
-                    // await axios
-                    //   .post('/apply', self.state)
-                    //   .then(function(res){
-                    //     // self.props.history.push('/');
-                    //     // window.scrollTo(0, 0);
-                    //     console.log(res)
-                    // });
-                  } catch (error) {
-                    console.log(error);
-                    self.props.history.push('/apply-error');
-                    //window.scrollTo(0, 0);
-                  }
-                } else {
-                  // Show Errors on bad inputs
-                  console.log(errorArr);
+                if (!(errorArr.length === 0)) {
+                  _context.next = 16;
+                  break;
                 }
 
-              case 5:
+                _context.prev = 5;
+                _context.next = 8;
+                return _axios2.default.post('/apply', self.state).then(function (res) {
+                  // self.props.history.push('/');
+                  // window.scrollTo(0, 0);
+                  console.log(res);
+                });
+
+              case 8:
+                _context.next = 14;
+                break;
+
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context['catch'](5);
+
+                console.log(_context.t0);
+                self.props.history.push('/apply-error');
+                //window.scrollTo(0, 0);
+
+              case 14:
+                _context.next = 17;
+                break;
+
+              case 16:
+                // Show Errors on bad inputs
+                console.log(errorArr);
+
+              case 17:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2);
+        }, _callee, _this2, [[5, 10]]);
       }));
 
       return function (_x) {
         return _ref.apply(this, arguments);
       };
     }();
-
-    _this.createDateCheckbox = function (date) {
-      return _react2.default.createElement(_Checkbox2.default, {
-        label: date,
-        isSelected: _this.state.dates[date],
-        onCheckboxChange: _this.handleDateChange,
-        key: date
-      });
-    };
-
-    _this.createTimeCheckbox = function (time) {
-      return _react2.default.createElement(_Checkbox2.default, {
-        label: time,
-        isSelected: _this.state.times[time],
-        onCheckboxChange: _this.handleTimeChange,
-        key: time
-      });
-    };
-
-    _this.createBackupCheckbox = function (backup) {
-      return _react2.default.createElement(_Checkbox2.default, {
-        label: 'yes',
-        isSelected: _this.state.backup,
-        onCheckboxChange: _this.handleBackupChange
-      });
-    };
-
-    _this.createDateCheckboxes = function () {
-      return DATES.map(_this.createDateCheckbox);
-    };
-
-    _this.createTimeCheckboxes = function () {
-      return TIMES.map(_this.createTimeCheckbox);
-    };
 
     _this.state = {
       dates: '',
@@ -545,179 +800,16 @@ var ApplicationsOpen = function (_Component) {
             )
           )
         ),
-        _react2.default.createElement(
-          'div',
-          { className: 'application-form' },
-          _react2.default.createElement(
-            'div',
-            { className: 'form-header' },
-            _react2.default.createElement(
-              'h5',
-              null,
-              'Please complete the form below'
-            ),
-            _react2.default.createElement(
-              'h5',
-              null,
-              '*indicates a required field'
-            )
-          ),
-          _react2.default.createElement(
-            'div',
-            { className: 'form-wrapper' },
-            _react2.default.createElement(
-              'form',
-              { onSubmit: this.handleSubmit },
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'twitchName' },
-                  'Twitch Link*'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'Your profile name exactly as it appears on twitch.'
-                ),
-                _react2.default.createElement('input', { name: 'twitchName', onChange: this.handleTextChange, type: 'text', placeholder: 'https://www.twitch.tv/Batman' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'discordName' },
-                  'Discord Name*'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'Please make sure you\'ve joined the official RBP Discord so we can message you easily.'
-                ),
-                _react2.default.createElement('input', { name: 'discordName', onChange: this.handleTextChange, type: 'text', placeholder: 'Batman' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'twitterName' },
-                  'Twitter Name'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'Please enter your Twitter name so we may easily find and @ you during your segment.'
-                ),
-                _react2.default.createElement('input', { name: 'twitterName', onChange: this.handleTextChange, type: 'text', placeholder: 'Batman' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'firstGame' },
-                  'Game 1*'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'The first game you will play during your segment.'
-                ),
-                _react2.default.createElement('input', { name: 'firstGame', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bro. 2 BBy' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'secondGame' },
-                  'Game 2*'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'The second game you will play during your segment.'
-                ),
-                _react2.default.createElement('input', { name: 'secondGame', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'h5',
-                  null,
-                  'Available Dates*'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'checkbox-section' },
-                  this.createDateCheckboxes()
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'h5',
-                  null,
-                  'Available Times*'
-                ),
-                _react2.default.createElement(
-                  'p',
-                  { className: 'description' },
-                  'All Times are in Eastern Time, the more availability you have, the higher chance you have to get into the event!'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'checkbox-section' },
-                  this.createTimeCheckboxes()
-                )
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'donationIncentive' },
-                  'Donation Incentive'
-                ),
-                _react2.default.createElement('input', { name: 'donationIncentive', onChange: this.handleTextChange, type: 'text', placeholder: 'Super Mario Bros. 2 again BBy' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'label',
-                  { htmlFor: 'whatDoYouLike' },
-                  'Why would you like to participate in RetroBlockParty? *'
-                ),
-                _react2.default.createElement('textarea', { name: 'whatDoYouLike', onChange: this.handleTextChange, type: 'text', placeholder: 'I like the food' })
-              ),
-              _react2.default.createElement(
-                'div',
-                { className: 'form-item' },
-                _react2.default.createElement(
-                  'h5',
-                  null,
-                  'Would you be willing to be available as a backup streamer?'
-                ),
-                _react2.default.createElement(
-                  'div',
-                  { className: 'checkbox-section' },
-                  this.createBackupCheckbox()
-                )
-              ),
-              _react2.default.createElement(
-                'button',
-                { name: 'submint', type: 'submit' },
-                ' submit'
-              )
-            )
-          )
-        )
+        _react2.default.createElement(_ApplicationForm2.default, {
+          times: TIMES,
+          dates: DATES,
+          backup: this.state.backup,
+          handleSubmit: this.handleSubmit,
+          handleTextChange: this.handleTextChange,
+          handleDateChange: this.handleDateChange,
+          handleTimeChange: this.handleTimeChange,
+          handleBackupChange: this.handleBackupChange
+        })
       );
     }
   }]);
@@ -729,49 +821,7 @@ exports.default = ApplicationsOpen;
 
 /***/ }),
 
-/***/ 272:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(11);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Checkbox = function Checkbox(_ref) {
-  var label = _ref.label,
-      isSelected = _ref.isSelected,
-      onCheckboxChange = _ref.onCheckboxChange;
-  return _react2.default.createElement(
-    "div",
-    { className: "form-check" },
-    _react2.default.createElement(
-      "label",
-      null,
-      _react2.default.createElement("input", {
-        type: "checkbox",
-        name: label,
-        checked: isSelected,
-        onChange: onCheckboxChange,
-        className: "form-check-input"
-      }),
-      label
-    )
-  );
-};
-
-exports.default = Checkbox;
-
-/***/ }),
-
-/***/ 273:
+/***/ 274:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -783,15 +833,15 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Apply = Apply;
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ApplicationsOpen = __webpack_require__(271);
+var _ApplicationsOpen = __webpack_require__(273);
 
 var _ApplicationsOpen2 = _interopRequireDefault(_ApplicationsOpen);
 
-var _ApplicationsClosed = __webpack_require__(270);
+var _ApplicationsClosed = __webpack_require__(271);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -827,7 +877,7 @@ exports.default = Apply;
 
 /***/ }),
 
-/***/ 274:
+/***/ 275:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -837,7 +887,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -963,7 +1013,7 @@ exports.default = FaqSection;
 
 /***/ }),
 
-/***/ 275:
+/***/ 276:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -973,7 +1023,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1038,7 +1088,7 @@ exports.default = Hero;
 
 /***/ }),
 
-/***/ 276:
+/***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1048,19 +1098,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WhatIsItSection = __webpack_require__(277);
+var _WhatIsItSection = __webpack_require__(278);
 
 var _WhatIsItSection2 = _interopRequireDefault(_WhatIsItSection);
 
-var _Hero = __webpack_require__(275);
+var _Hero = __webpack_require__(276);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _FaqSection = __webpack_require__(274);
+var _FaqSection = __webpack_require__(275);
 
 var _FaqSection2 = _interopRequireDefault(_FaqSection);
 
@@ -1080,7 +1130,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 277:
+/***/ 278:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1090,7 +1140,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1136,7 +1186,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 278:
+/***/ 279:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1146,11 +1196,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(620);
+__webpack_require__(621);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1166,7 +1216,7 @@ exports.default = NotFound;
 
 /***/ }),
 
-/***/ 279:
+/***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1176,7 +1226,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1231,7 +1281,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 280:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1241,7 +1291,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1259,7 +1309,7 @@ exports.default = FinishedSchedule;
 
 /***/ }),
 
-/***/ 281:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1269,7 +1319,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1324,7 +1374,7 @@ exports.default = Offseason;
 
 /***/ }),
 
-/***/ 282:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1336,7 +1386,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Schedule = Schedule;
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1344,19 +1394,19 @@ var _Header = __webpack_require__(109);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _TakingApplications = __webpack_require__(283);
+var _TakingApplications = __webpack_require__(284);
 
 var _TakingApplications2 = _interopRequireDefault(_TakingApplications);
 
-var _Offseason = __webpack_require__(281);
+var _Offseason = __webpack_require__(282);
 
 var _Offseason2 = _interopRequireDefault(_Offseason);
 
-var _FinishedSchedule = __webpack_require__(280);
+var _FinishedSchedule = __webpack_require__(281);
 
 var _FinishedSchedule2 = _interopRequireDefault(_FinishedSchedule);
 
-var _ApplicationsClosed = __webpack_require__(279);
+var _ApplicationsClosed = __webpack_require__(280);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -1419,7 +1469,7 @@ exports.default = Schedule;
 
 /***/ }),
 
-/***/ 283:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1429,7 +1479,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1484,7 +1534,7 @@ exports.default = TakingApplications;
 
 /***/ }),
 
-/***/ 284:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1534,13 +1584,13 @@ function validateCheckboxes(checkboxGroupName, checkboxGroup) {
 
 /***/ }),
 
-/***/ 285:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(11);
+var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1548,7 +1598,7 @@ var _reactDom = __webpack_require__(108);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(248);
+var _App = __webpack_require__(249);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -1558,21 +1608,21 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 488:
+/***/ 489:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(489)(true);
+exports = module.exports = __webpack_require__(490)(true);
 // Module
 exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\r\n  padding: 200px;\r\n  font-size: 3rem;\r\n\r\n}\r\n"]}]);
 
 
 /***/ }),
 
-/***/ 620:
+/***/ 621:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(488);
+var content = __webpack_require__(489);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1586,7 +1636,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(621)(content, options);
+var update = __webpack_require__(622)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1635,4 +1685,4 @@ var HrefLinks = exports.HrefLinks = {
 
 /***/ })
 
-},[285]);
+},[286]);

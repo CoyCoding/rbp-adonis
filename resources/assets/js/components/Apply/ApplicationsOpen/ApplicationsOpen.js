@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {HrefLinks} from '../.././Utils/HrefLinks';
 import Checkbox from './Checkbox';
+import ApplicationForm from './ApplicationForm';
 import {validateText, getApplicationErrors, validateCheckboxes} from '../.././Utils/Validation'
 import { createHashHistory } from 'history'
 import axios from 'axios';
@@ -30,7 +31,7 @@ export default class ApplicationsOpen extends Component {
     };
   }
 
-componentWillMount() {
+  componentWillMount() {
   this.setState({
     //Set the value of current event dates
     dates: DATES.reduce((dates, date) => ({
@@ -63,7 +64,7 @@ componentWillMount() {
           ...this.state.formErrors,
           [name]: validateText(name, this.state.textFields[name])
         }
-      }, ()=> {console.log(this.state.formErrors[name])})
+      })
   })
 }
 
@@ -106,9 +107,7 @@ componentWillMount() {
   handleBackupChange = (event) =>{
     this.setState({
         backup: !this.state.backup
-
     })
-
   }
 
   handleSubmit = async (submitEvent) =>{
@@ -117,14 +116,13 @@ componentWillMount() {
     const errorArr = getErrors();
     if(errorArr.length === 0){
       try{
-        // console.log('posting')
-        // await axios
-        //   .post('/apply', self.state)
-        //   .then(function(res){
-        //     // self.props.history.push('/');
-        //     // window.scrollTo(0, 0);
-        //     console.log(res)
-        // });
+        await axios
+          .post('/apply', self.state)
+          .then(function(res){
+            // self.props.history.push('/');
+            // window.scrollTo(0, 0);
+            console.log(res)
+        });
       } catch (error){
         console.log(error)
         self.props.history.push('/apply-error');
@@ -142,37 +140,7 @@ componentWillMount() {
           return self.state.formErrors[error].length > 0
         })
     }
-
   }
-
-  createDateCheckbox = date => (
-        <Checkbox
-          label={date}
-          isSelected={this.state.dates[date]}
-          onCheckboxChange={this.handleDateChange}
-          key={date}
-        />
-      );
-
-  createTimeCheckbox = time => (
-        <Checkbox
-          label={time}
-          isSelected={this.state.times[time]}
-          onCheckboxChange={this.handleTimeChange}
-          key={time}
-        />
-      );
-
-  createBackupCheckbox = backup => (
-    <Checkbox
-      label='yes'
-      isSelected={this.state.backup}
-      onCheckboxChange={this.handleBackupChange}
-      />
-  );
-
-  createDateCheckboxes = () => DATES.map(this.createDateCheckbox);
-  createTimeCheckboxes = () => TIMES.map(this.createTimeCheckbox);
 
   render(){
     return (
@@ -191,69 +159,16 @@ componentWillMount() {
           <p>We look forward to reviewing your application!</p>
         </div>
       </div>
-        <div className="application-form">
-          <div className="form-header">
-            <h5>Please complete the form below</h5>
-            <h5>*indicates a required field</h5>
-          </div>
-          <div className="form-wrapper">
-            <form onSubmit={this.handleSubmit}>
-              <div className="form-item">
-                <label htmlFor="twitchName">Twitch Link*</label>
-                <p className="description">Your profile name exactly as it appears on twitch.</p>
-                <input name="twitchName" onChange={this.handleTextChange} type="text" placeholder="https://www.twitch.tv/Batman"/>
-              </div>
-              <div className="form-item">
-                <label htmlFor="discordName">Discord Name*</label>
-                <p className="description">Please make sure you've joined the official RBP Discord so we can message you easily.</p>
-                <input name="discordName"  onChange={this.handleTextChange} type="text" placeholder="Batman"/>
-              </div>
-              <div className="form-item">
-                <label htmlFor="twitterName">Twitter Name</label>
-                <p className="description">Please enter your Twitter name so we may easily find and @ you during your segment.</p>
-                <input name="twitterName"  onChange={this.handleTextChange} type="text" placeholder="Batman"/>
-              </div>
-              <div className="form-item">
-                <label htmlFor="firstGame">Game 1*</label>
-                <p className="description">The first game you will play during your segment.</p>
-                <input name="firstGame"  onChange={this.handleTextChange} type="text" placeholder="Super Mario Bro. 2 BBy"/>
-              </div>
-              <div className="form-item">
-                <label htmlFor="secondGame">Game 2*</label>
-                <p className="description">The second game you will play during your segment.</p>
-                <input name="secondGame"  onChange={this.handleTextChange} type="text" placeholder="Super Mario Bros. 2 again BBy"/>
-              </div>
-              <div className="form-item">
-                <h5>Available Dates*</h5>
-                <div className="checkbox-section">
-                    {this.createDateCheckboxes()}
-                </div>
-              </div>
-              <div className="form-item">
-                <h5>Available Times*</h5>
-                <p className="description">All Times are in Eastern Time, the more availability you have, the higher chance you have to get into the event!</p>
-                <div className="checkbox-section">
-                  {this.createTimeCheckboxes()}
-                </div>
-              </div>
-              <div className="form-item">
-                <label htmlFor="donationIncentive">Donation Incentive</label>
-                <input name="donationIncentive"  onChange={this.handleTextChange} type="text" placeholder="Super Mario Bros. 2 again BBy"/>
-              </div>
-              <div className="form-item">
-                <label htmlFor="whatDoYouLike">Why would you like to participate in RetroBlockParty? *</label>
-                <textarea name="whatDoYouLike"  onChange={this.handleTextChange} type="text" placeholder="I like the food"/>
-              </div>
-              <div className="form-item">
-                <h5>Would you be willing to be available as a backup streamer?</h5>
-                <div className="checkbox-section">
-                    {this.createBackupCheckbox()}
-                </div>
-                </div>
-                <button name="submint" type="submit" > submit</button>
-            </form>
-          </div>
-        </div>
+      <ApplicationForm
+      times={TIMES}
+      dates={DATES}
+      backup={this.state.backup}
+      handleSubmit={this.handleSubmit}
+      handleTextChange={this.handleTextChange}
+      handleDateChange={this.handleDateChange}
+      handleTimeChange={this.handleTimeChange}
+      handleBackupChange={this.handleBackupChange}
+      />
       </section>
     );
   }
