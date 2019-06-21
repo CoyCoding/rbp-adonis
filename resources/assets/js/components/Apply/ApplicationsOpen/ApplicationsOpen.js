@@ -17,7 +17,6 @@ export default class ApplicationsOpen extends Component {
     this.state = {
       dates: '',
       times: '',
-      textFields: {
         discordName: "",
         donationIncentive: "",
         firstGame: "",
@@ -25,9 +24,8 @@ export default class ApplicationsOpen extends Component {
         twitchName: "",
         twitterName: "",
         whatDoYouLike: "",
-      },
       backup: false,
-      formErrors: {},
+      formErrors: {}
     };
   }
 
@@ -52,17 +50,14 @@ export default class ApplicationsOpen extends Component {
     const name = event.target.name;
     //set state of current textbox to user input
     this.setState({
-      textFields: {
-        ...this.state.textFields,
         [name]: event.target.value
-      }
     //set the error state based on the new state
     //Maybe change to on submit
     }, () => {
       this.setState({
         formErrors: {
           ...this.state.formErrors,
-          [name]: validateText(name, this.state.textFields[name])
+          [name]: validateText(name, this.state[name])
         }
       })
   })
@@ -125,7 +120,7 @@ export default class ApplicationsOpen extends Component {
         });
       } catch (error){
         console.log(error)
-        self.props.history.push('/apply-error');
+        //self.props.history.push('/apply-error');
         //window.scrollTo(0, 0);
       }
     }
@@ -135,8 +130,6 @@ export default class ApplicationsOpen extends Component {
     }
     function getErrors() {
       //for each input name in form errors filter and return all inputs with errors
-      console.log(self.state.formErrors)
-      console.log(Object.keys(self.state.formErrors))
       return Object.keys(self.state.formErrors)
         .filter((error) => {
           return self.state.formErrors[error].length > 0

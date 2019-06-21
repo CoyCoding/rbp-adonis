@@ -615,13 +615,9 @@ var ApplicationsOpen = function (_Component) {
     _this.handleTextChange = function (event) {
       var name = event.target.name;
       //set state of current textbox to user input
-      _this.setState({
-        textFields: _extends({}, _this.state.textFields, _defineProperty({}, name, event.target.value))
-        //set the error state based on the new state
-        //Maybe change to on submit
-      }, function () {
+      _this.setState(_defineProperty({}, name, event.target.value), function () {
         _this.setState({
-          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateText)(name, _this.state.textFields[name])))
+          formErrors: _extends({}, _this.state.formErrors, _defineProperty({}, name, (0, _Validation.validateText)(name, _this.state[name])))
         });
       });
     };
@@ -668,8 +664,6 @@ var ApplicationsOpen = function (_Component) {
               case 0:
                 getErrors = function getErrors() {
                   //for each input name in form errors filter and return all inputs with errors
-                  console.log(self.state.formErrors);
-                  console.log(Object.keys(self.state.formErrors));
                   return Object.keys(self.state.formErrors).filter(function (error) {
                     return self.state.formErrors[error].length > 0;
                   });
@@ -680,7 +674,7 @@ var ApplicationsOpen = function (_Component) {
                 errorArr = getErrors();
 
                 if (!(errorArr.length === 0)) {
-                  _context.next = 16;
+                  _context.next = 15;
                   break;
                 }
 
@@ -693,7 +687,7 @@ var ApplicationsOpen = function (_Component) {
                 });
 
               case 8:
-                _context.next = 14;
+                _context.next = 13;
                 break;
 
               case 10:
@@ -701,18 +695,18 @@ var ApplicationsOpen = function (_Component) {
                 _context.t0 = _context['catch'](5);
 
                 console.log(_context.t0);
-                self.props.history.push('/apply-error');
+                //self.props.history.push('/apply-error');
                 //window.scrollTo(0, 0);
 
-              case 14:
-                _context.next = 17;
+              case 13:
+                _context.next = 16;
                 break;
 
-              case 16:
+              case 15:
                 // Show Errors on bad inputs
                 console.log(errorArr);
 
-              case 17:
+              case 16:
               case 'end':
                 return _context.stop();
             }
@@ -728,15 +722,13 @@ var ApplicationsOpen = function (_Component) {
     _this.state = {
       dates: '',
       times: '',
-      textFields: {
-        discordName: "",
-        donationIncentive: "",
-        firstGame: "",
-        secondGame: "",
-        twitchName: "",
-        twitterName: "",
-        whatDoYouLike: ""
-      },
+      discordName: "",
+      donationIncentive: "",
+      firstGame: "",
+      secondGame: "",
+      twitchName: "",
+      twitterName: "",
+      whatDoYouLike: "",
       backup: false,
       formErrors: {}
     };

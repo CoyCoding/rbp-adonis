@@ -20,15 +20,14 @@ class ApplicationController {
     const activeEventId = 1;
     const formData = request.post();
     //create applicationData from form
-    console.log(formData)
     const applicationData = {
-      twitch_name: formData.textFields.twitchName,
-      twitter_name: formData.textFields.twitterName,
-      discord_name:  formData.textFields.discordName,
-      game_1:  formData.textFields.firstGame,
-      game_2:  formData.textFields.secondGame,
-      donation_incentive: formData.textFields.donationIncentive,
-      info: formData.textFields.whatDoYouLike,
+      twitch_name: formData.twitchName,
+      twitter_name: formData.twitterName,
+      discord_name:  formData.discordName,
+      game_1:  formData.firstGame,
+      game_2:  formData.secondGame,
+      donation_incentive: formData.donationIncentive,
+      info: formData.whatDoYouLike,
       backup: formData.backup,
       event_id: formData.activeEventId
     }

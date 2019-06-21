@@ -39,8 +39,7 @@ const globalMiddleware = [
 */
 const namedMiddleware = {
   auth: 'Adonis/Middleware/Auth',
-  guest: 'Adonis/Middleware/AllowGuestOnly',
-  toNull: 'App/Middleware/ConvertEmptyStringsToNull'
+  guest: 'Adonis/Middleware/AllowGuestOnly'
 }
 
 /*
