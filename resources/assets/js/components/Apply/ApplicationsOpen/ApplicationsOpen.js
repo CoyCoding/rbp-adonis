@@ -135,6 +135,8 @@ export default class ApplicationsOpen extends Component {
     }
     function getErrors() {
       //for each input name in form errors filter and return all inputs with errors
+      console.log(self.state.formErrors)
+      console.log(Object.keys(self.state.formErrors))
       return Object.keys(self.state.formErrors)
         .filter((error) => {
           return self.state.formErrors[error].length > 0

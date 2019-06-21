@@ -6,7 +6,9 @@ const validationMessages =
   twitchName: "We need your twitch name to check out your content",
   whatDoYouLike: "Come on, at least say you think FTC is sexy",
   dates: "We need to know what day(s) you are available",
-  times:"You need to have at least available time slot"
+  times:"You need to have at least available time slot",
+  twitterName: '',
+  donationIncentive: ''
 }
 
 export function getApplicationErrors(){

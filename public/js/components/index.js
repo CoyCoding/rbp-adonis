@@ -337,6 +337,7 @@ var _Checkbox2 = _interopRequireDefault(_Checkbox);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function ApplicationForm(props) {
+
   var createDateCheckbox = function createDateCheckbox(date) {
     return _react2.default.createElement(_Checkbox2.default, {
       label: date,
@@ -369,6 +370,7 @@ function ApplicationForm(props) {
   var createTimeCheckboxes = function createTimeCheckboxes() {
     return props.times.map(createTimeCheckbox);
   };
+
   return _react2.default.createElement(
     'div',
     { className: 'application-form' },
@@ -666,6 +668,8 @@ var ApplicationsOpen = function (_Component) {
               case 0:
                 getErrors = function getErrors() {
                   //for each input name in form errors filter and return all inputs with errors
+                  console.log(self.state.formErrors);
+                  console.log(Object.keys(self.state.formErrors));
                   return Object.keys(self.state.formErrors).filter(function (error) {
                     return self.state.formErrors[error].length > 0;
                   });
@@ -1553,7 +1557,9 @@ var validationMessages = {
   twitchName: "We need your twitch name to check out your content",
   whatDoYouLike: "Come on, at least say you think FTC is sexy",
   dates: "We need to know what day(s) you are available",
-  times: "You need to have at least available time slot"
+  times: "You need to have at least available time slot",
+  twitterName: '',
+  donationIncentive: ''
 };
 
 function getApplicationErrors() {

@@ -2,6 +2,7 @@ import React from 'react';
 import Checkbox from './Checkbox';
 
 export function ApplicationForm(props){
+
   const createDateCheckbox = date => (
         <Checkbox
           label={date}
@@ -30,6 +31,7 @@ export function ApplicationForm(props){
 
   const createDateCheckboxes = () => props.dates.map(createDateCheckbox);
   const createTimeCheckboxes = () => props.times.map(createTimeCheckbox);
+
   return(
     <div className="application-form">
       <div className="form-header">
