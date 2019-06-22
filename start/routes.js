@@ -18,9 +18,13 @@ const Route = use('Route')
 
 Route.on('/').render('welcome');
 Route.group(()=>{
-  Route.get('','ApplicationController.index');
-  Route.post('','ApplicationController.store')
+  Route.post('','ApplicationController.store');
 }).prefix('apply')
+
+Route.group(()=>{
+  Route.post('', 'AdminController.index');
+}).prefix('login')
+
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');
 // Route.get('/admin', 'AdminController.index');

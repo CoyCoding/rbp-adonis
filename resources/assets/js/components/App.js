@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import NotFound from './NotFound/NotFound';
 import Schedule from './Schedule/Schedule';
 import Apply from './Apply/Apply';
-
+import Login from './Login/Login';
 
 
 export default class App extends Component {
@@ -40,6 +40,10 @@ export default class App extends Component {
 							<Apply {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
 						}
 							/>
+							<Route exact path="/login" render={props =>
+								<Login {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
+							}
+								/>
 							<Route component={NotFound}/>
 				</Switch>
 				 </div>

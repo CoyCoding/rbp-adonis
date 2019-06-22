@@ -1,8 +1,9 @@
 'use strict'
 
 class AdminController {
-  async index({view}){
-    return view.render('admin')
+  async index({response, request}){
+    console.log(request.body)
+    return 'yes'
   }
 }
 
