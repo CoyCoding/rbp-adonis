@@ -25,6 +25,8 @@ Route.group(()=>{
   Route.post('', 'AdminController.index');
 }).prefix('login')
 
+Route.post('/logout', 'AdminController.logout');
+
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');
 // Route.get('/admin', 'AdminController.index');

@@ -10,7 +10,6 @@ export default class Login extends Component {
     this.state = {
       username: '',
       password: '',
-      loggedIn: '',
       formErrors: {
         username: '',
         password: ''
@@ -46,14 +45,43 @@ export default class Login extends Component {
     submitEvent.preventDefault();
     const self = this;
     //const errorArr = getErrors();
-    console.log(this.state)
     if(1){
       try{
         await axios
           .post('/login', self.state)
           .then(function(res){
+            self.props.sessionChange(res);
+        });
+      } catch (error){
+        console.log(error)
+        //self.props.history.push('/apply-error');
+        //window.scrollTo(0, 0);
+      }
+    }
+    else{
+      console.log('errorArr')
+    }
 
-            console.log(res)
+    function getErrors() {
+      //for each input name in form errors filter and return all inputs with errors
+      return Object.keys(self.state.formErrors)
+        .filter((error) => {
+          return self.state.formErrors[error].length > 0
+        })
+    }
+  }
+
+  handleSubmitLogout = async (submitEvent) =>{
+    submitEvent.preventDefault();
+    const self = this;
+    //const errorArr = getErrors();
+    console.log(this.state)
+    if(1){
+      try{
+        await axios
+          .post('/logout', self.props.sessionId)
+          .then(function(res){
+
         });
       } catch (error){
         console.log(error)
@@ -74,6 +102,7 @@ export default class Login extends Component {
     }
   }
 
+
   render(){
     return (
       <section id="login">
@@ -86,6 +115,10 @@ export default class Login extends Component {
           <button type="submit">test</button>
           </form>
         </div>
+        <form onSubmit={this.handleSubmitLogout}>
+        <button type="submit">test</button>
+        </form>
+
       </section>
     );
   }
