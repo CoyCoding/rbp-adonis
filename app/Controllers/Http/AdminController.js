@@ -13,13 +13,12 @@ class AdminController {
          return auth._ctx.session._sessionId;
     }catch (e){
       console.log(e)
+      return e
     }
-
-
-    return 'yes'
   }
   async logout({respnose, request, auth, session}){
     console.log(request.post().data)
+    console.log(auth._ctx.session._sessionId)
     console.log('logged off');
     auth.logout();
   }

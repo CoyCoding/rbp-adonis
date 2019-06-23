@@ -40,7 +40,6 @@ export default class Login extends Component {
   })
 }
 
-
   handleSubmit = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
@@ -50,7 +49,7 @@ export default class Login extends Component {
         await axios
           .post('/login', self.state)
           .then(function(res){
-            self.props.sessionChange(res);
+
         });
       } catch (error){
         console.log(error)
@@ -81,7 +80,7 @@ export default class Login extends Component {
         await axios
           .post('/logout', self.props.sessionId)
           .then(function(res){
-
+            self.props.sessionChange(res);
         });
       } catch (error){
         console.log(error)

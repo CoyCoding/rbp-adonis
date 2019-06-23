@@ -150,14 +150,6 @@ var App = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
-		_this.sessionIdChange = function (id) {
-			_this.setState({
-				sessionId: id
-			}, function () {
-				console.log(_this.state.sessionId);
-			});
-		};
-
 		_this.scheduleStatusChange = function (event) {
 			_this.setState({
 				scheduleStatus: event.target.value
@@ -165,7 +157,6 @@ var App = function (_Component) {
 		};
 
 		_this.state = {
-			sessionId: '',
 			scheduleStatus: 'takingApplications',
 			eventDate: ''
 		};
@@ -177,6 +168,7 @@ var App = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
+			console.log(this.state.sessionId);
 			return _react2.default.createElement(
 				_reactRouterDom.BrowserRouter,
 				null,
@@ -197,7 +189,7 @@ var App = function (_Component) {
 							}
 						}),
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', render: function render(props) {
-								return _react2.default.createElement(_Login2.default, _extends({}, props, { sessionId: _this2.state.sessionId, sessionChange: _this2.sessionIdChange, scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
+								return _react2.default.createElement(_Login2.default, _extends({}, props, { sessionChange: _this2.sessionIdChange, scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
 							}
 						}),
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/admin', render: function render(props) {
@@ -249,41 +241,44 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 //import Admin from './Admin';
 
 
-var AdminPage = function (_Component) {
-	_inherits(AdminPage, _Component);
+var Admin = function (_Component) {
+	_inherits(Admin, _Component);
 
-	function AdminPage(props) {
-		_classCallCheck(this, AdminPage);
+	function Admin(props) {
+		_classCallCheck(this, Admin);
 
-		var _this = _possibleConstructorReturn(this, (AdminPage.__proto__ || Object.getPrototypeOf(AdminPage)).call(this, props));
+		var _this = _possibleConstructorReturn(this, (Admin.__proto__ || Object.getPrototypeOf(Admin)).call(this, props));
 
 		_this.state = {
 			scheduleStatus: 'takingApplications'
+
 		};
 		return _this;
 	}
 
-	_createClass(AdminPage, [{
+	_createClass(Admin, [{
 		key: 'componentWillMount',
 		value: function componentWillMount() {}
 	}, {
 		key: 'render',
 		value: function render() {
+			console.log(this.props.sessionId);
 			return _react2.default.createElement(
 				'h1',
 				{ style: { marginTop: '56px' } },
-				'test'
+				'test ',
+				this.props.sessionId
 			);
 		}
 	}]);
 
-	return AdminPage;
+	return Admin;
 }(_react.Component);
 
 //ReactDOM.render(<AdminPage />, document.getElementById('app'));
 
 
-exports.default = AdminPage;
+exports.default = Admin;
 
 /***/ }),
 
@@ -1270,10 +1265,7 @@ var Login = function (_Component) {
 
                 _context.prev = 4;
                 _context.next = 7;
-                return _axios2.default.post('/login', self.state).then(function (res) {
-
-                  self.props.sessionChange(res);
-                });
+                return _axios2.default.post('/login', self.state).then(function (res) {});
 
               case 7:
                 _context.next = 12;
@@ -1334,7 +1326,9 @@ var Login = function (_Component) {
 
                 _context2.prev = 5;
                 _context2.next = 8;
-                return _axios2.default.post('/logout', self.props.sessionId).then(function (res) {});
+                return _axios2.default.post('/logout', self.props.sessionId).then(function (res) {
+                  self.props.sessionChange(res);
+                });
 
               case 8:
                 _context2.next = 13;
