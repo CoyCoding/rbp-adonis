@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import Header from '.././Header/Header.js';
 import axios from 'axios';
-
-
+import cookies from 'js-cookies';
 
 export default class Login extends Component {
   constructor(props) {
@@ -13,7 +12,8 @@ export default class Login extends Component {
       formErrors: {
         username: '',
         password: ''
-      }
+      },
+      token: ''
     };
   }
 
@@ -45,11 +45,12 @@ export default class Login extends Component {
     const self = this;
     //const errorArr = getErrors();
     if(1){
+      console.log(cookies)
       try{
         await axios
           .post('/login', self.state)
           .then(function(res){
-
+            console.log(res)
         });
       } catch (error){
         console.log(error)
@@ -78,9 +79,8 @@ export default class Login extends Component {
     if(1){
       try{
         await axios
-          .post('/logout', self.props.sessionId)
+          .post('/logout')
           .then(function(res){
-            self.props.sessionChange(res);
         });
       } catch (error){
         console.log(error)

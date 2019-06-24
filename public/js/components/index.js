@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 110:
+/***/ 111:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10,7 +10,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -44,7 +44,7 @@ exports.default = Heart;
 
 /***/ }),
 
-/***/ 170:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -54,7 +54,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -86,7 +86,7 @@ exports.default = Checkbox;
 
 /***/ }),
 
-/***/ 250:
+/***/ 257:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -100,39 +100,43 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(159);
+var _reactRouterDom = __webpack_require__(161);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(84);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(278);
+var _Home = __webpack_require__(284);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _NotFound = __webpack_require__(281);
+var _NotFound = __webpack_require__(287);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _Schedule = __webpack_require__(285);
+var _Schedule = __webpack_require__(291);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
-var _Apply = __webpack_require__(275);
+var _Apply = __webpack_require__(281);
 
 var _Apply2 = _interopRequireDefault(_Apply);
 
-var _Login = __webpack_require__(280);
+var _Login = __webpack_require__(286);
 
 var _Login2 = _interopRequireDefault(_Login);
 
-var _AdminPage = __webpack_require__(271);
+var _AdminPage = __webpack_require__(277);
 
 var _AdminPage2 = _interopRequireDefault(_AdminPage);
+
+var _jsCookies = __webpack_require__(213);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -168,7 +172,7 @@ var App = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			console.log(this.state.sessionId);
+			console.log(_jsCookies2.default);
 			return _react2.default.createElement(
 				_reactRouterDom.BrowserRouter,
 				null,
@@ -210,7 +214,7 @@ exports.default = App;
 
 /***/ }),
 
-/***/ 271:
+/***/ 277:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -222,11 +226,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(83);
+var _reactDom = __webpack_require__(82);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -282,7 +286,7 @@ exports.default = Admin;
 
 /***/ }),
 
-/***/ 272:
+/***/ 278:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -293,7 +297,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ApplicationsClosed = ApplicationsClosed;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -315,7 +319,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 273:
+/***/ 279:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -326,11 +330,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ApplicationForm = ApplicationForm;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Checkbox = __webpack_require__(170);
+var _Checkbox = __webpack_require__(173);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
@@ -550,7 +554,7 @@ exports.default = ApplicationForm;
 
 /***/ }),
 
-/***/ 274:
+/***/ 280:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -564,25 +568,25 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(85);
 
-var _Checkbox = __webpack_require__(170);
+var _Checkbox = __webpack_require__(173);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
-var _ApplicationForm = __webpack_require__(273);
+var _ApplicationForm = __webpack_require__(279);
 
 var _ApplicationForm2 = _interopRequireDefault(_ApplicationForm);
 
-var _Validation = __webpack_require__(287);
+var _Validation = __webpack_require__(293);
 
-var _history = __webpack_require__(139);
+var _history = __webpack_require__(62);
 
-var _axios = __webpack_require__(161);
+var _axios = __webpack_require__(164);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -817,7 +821,7 @@ exports.default = ApplicationsOpen;
 
 /***/ }),
 
-/***/ 275:
+/***/ 281:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -829,19 +833,19 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Apply = Apply;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ApplicationsOpen = __webpack_require__(274);
+var _ApplicationsOpen = __webpack_require__(280);
 
 var _ApplicationsOpen2 = _interopRequireDefault(_ApplicationsOpen);
 
-var _ApplicationsClosed = __webpack_require__(272);
+var _ApplicationsClosed = __webpack_require__(278);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(84);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -873,7 +877,7 @@ exports.default = Apply;
 
 /***/ }),
 
-/***/ 276:
+/***/ 282:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -883,7 +887,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1009,7 +1013,7 @@ exports.default = FaqSection;
 
 /***/ }),
 
-/***/ 277:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1019,7 +1023,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1084,7 +1088,7 @@ exports.default = Hero;
 
 /***/ }),
 
-/***/ 278:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1094,19 +1098,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WhatIsItSection = __webpack_require__(279);
+var _WhatIsItSection = __webpack_require__(285);
 
 var _WhatIsItSection2 = _interopRequireDefault(_WhatIsItSection);
 
-var _Hero = __webpack_require__(277);
+var _Hero = __webpack_require__(283);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _FaqSection = __webpack_require__(276);
+var _FaqSection = __webpack_require__(282);
 
 var _FaqSection2 = _interopRequireDefault(_FaqSection);
 
@@ -1126,7 +1130,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 279:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1136,7 +1140,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1182,7 +1186,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 280:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1196,17 +1200,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(84);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _axios = __webpack_require__(161);
+var _axios = __webpack_require__(164);
 
 var _axios2 = _interopRequireDefault(_axios);
+
+var _jsCookies = __webpack_require__(213);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1259,39 +1267,42 @@ var Login = function (_Component) {
                 //const errorArr = getErrors();
 
                 if (false) {
-                  _context.next = 14;
+                  _context.next = 15;
                   break;
                 }
 
-                _context.prev = 4;
-                _context.next = 7;
-                return _axios2.default.post('/login', self.state).then(function (res) {});
+                console.log(_jsCookies2.default);
+                _context.prev = 5;
+                _context.next = 8;
+                return _axios2.default.post('/login', self.state).then(function (res) {
+                  console.log(res);
+                });
 
-              case 7:
-                _context.next = 12;
+              case 8:
+                _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context['catch'](4);
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context['catch'](5);
 
                 console.log(_context.t0);
                 //self.props.history.push('/apply-error');
                 //window.scrollTo(0, 0);
 
-              case 12:
-                _context.next = 15;
+              case 13:
+                _context.next = 16;
                 break;
 
-              case 14:
+              case 15:
                 console.log('errorArr');
 
-              case 15:
+              case 16:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[4, 9]]);
+        }, _callee, _this2, [[5, 10]]);
       }));
 
       return function (_x) {
@@ -1326,9 +1337,7 @@ var Login = function (_Component) {
 
                 _context2.prev = 5;
                 _context2.next = 8;
-                return _axios2.default.post('/logout', self.props.sessionId).then(function (res) {
-                  self.props.sessionChange(res);
-                });
+                return _axios2.default.post('/logout').then(function (res) {});
 
               case 8:
                 _context2.next = 13;
@@ -1369,7 +1378,8 @@ var Login = function (_Component) {
       formErrors: {
         username: '',
         password: ''
-      }
+      },
+      token: ''
     };
     return _this;
   }
@@ -1430,7 +1440,7 @@ exports.default = Login;
 
 /***/ }),
 
-/***/ 281:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1440,11 +1450,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(623);
+__webpack_require__(644);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1460,7 +1470,7 @@ exports.default = NotFound;
 
 /***/ }),
 
-/***/ 282:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1470,15 +1480,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(110);
+var _Heart = __webpack_require__(111);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(85);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1525,7 +1535,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 283:
+/***/ 289:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1535,7 +1545,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -1553,7 +1563,7 @@ exports.default = FinishedSchedule;
 
 /***/ }),
 
-/***/ 284:
+/***/ 290:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1563,15 +1573,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(110);
+var _Heart = __webpack_require__(111);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(85);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1618,7 +1628,7 @@ exports.default = Offseason;
 
 /***/ }),
 
-/***/ 285:
+/***/ 291:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1630,27 +1640,27 @@ Object.defineProperty(exports, "__esModule", {
 exports.handleScheduleStatus = undefined;
 exports.Schedule = Schedule;
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(84);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _TakingApplications = __webpack_require__(286);
+var _TakingApplications = __webpack_require__(292);
 
 var _TakingApplications2 = _interopRequireDefault(_TakingApplications);
 
-var _Offseason = __webpack_require__(284);
+var _Offseason = __webpack_require__(290);
 
 var _Offseason2 = _interopRequireDefault(_Offseason);
 
-var _FinishedSchedule = __webpack_require__(283);
+var _FinishedSchedule = __webpack_require__(289);
 
 var _FinishedSchedule2 = _interopRequireDefault(_FinishedSchedule);
 
-var _ApplicationsClosed = __webpack_require__(282);
+var _ApplicationsClosed = __webpack_require__(288);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -1713,7 +1723,7 @@ exports.default = Schedule;
 
 /***/ }),
 
-/***/ 286:
+/***/ 292:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1723,15 +1733,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(110);
+var _Heart = __webpack_require__(111);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(85);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1778,7 +1788,7 @@ exports.default = TakingApplications;
 
 /***/ }),
 
-/***/ 287:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1830,21 +1840,21 @@ function validateCheckboxes(checkboxGroupName, checkboxGroup) {
 
 /***/ }),
 
-/***/ 288:
+/***/ 294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(83);
+var _reactDom = __webpack_require__(82);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _App = __webpack_require__(250);
+var _App = __webpack_require__(257);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -1854,21 +1864,21 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 491:
+/***/ 497:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(492)(true);
+exports = module.exports = __webpack_require__(498)(true);
 // Module
 exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\r\n  padding: 200px;\r\n  font-size: 3rem;\r\n\r\n}\r\n"]}]);
 
 
 /***/ }),
 
-/***/ 623:
+/***/ 644:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(491);
+var content = __webpack_require__(497);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1882,7 +1892,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(624)(content, options);
+var update = __webpack_require__(645)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1915,7 +1925,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 85:
+/***/ 84:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1925,7 +1935,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _react = __webpack_require__(9);
+var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -2004,7 +2014,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 86:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2020,4 +2030,4 @@ var HrefLinks = exports.HrefLinks = {
 
 /***/ })
 
-},[288]);
+},[294]);

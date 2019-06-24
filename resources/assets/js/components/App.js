@@ -7,7 +7,7 @@ import Schedule from './Schedule/Schedule';
 import Apply from './Apply/Apply';
 import Login from './Login/Login';
 import Admin from './Admin/AdminPage';
-
+import cookies from 'js-cookies';
 
 export default class App extends Component {
 	constructor() {
@@ -26,7 +26,7 @@ export default class App extends Component {
 	};
 
 	render() {
-		console.log(this.state.sessionId)
+		console.log(cookies)
 		return (
 
       <Router>
