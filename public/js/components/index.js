@@ -172,7 +172,6 @@ var App = function (_Component) {
 		value: function render() {
 			var _this2 = this;
 
-			console.log(_jsCookies2.default);
 			return _react2.default.createElement(
 				_reactRouterDom.BrowserRouter,
 				null,
