@@ -9,11 +9,11 @@ class AdminController {
     const {username, password} = request.all();
     try{
          console.log('logged in');
-         await auth.attempt(username, password);
-         let user = await User.findBy('username', username)
+         const user = await auth.attempt(username, password);
+         // let user = await User.findBy('username', username)
          console.log(user)
-         let accessToken = await auth.generate(user)
-         return response.json({"user":user, "access_token": accessToken})
+         //let accessToken = await auth.generate(user)
+         // return response.json({"user":user, "access_token": accessToken})
          // console.log(user)
          // const accessToken = await auth.generate(user);
          // return response.json({user: user,access_token: accessToken})
