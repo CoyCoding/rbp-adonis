@@ -1868,7 +1868,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 exports = module.exports = __webpack_require__(498)(true);
 // Module
-exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\r\n  padding: 200px;\r\n  font-size: 3rem;\r\n\r\n}\r\n"]}]);
+exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\n  padding: 200px;\n  font-size: 3rem;\n\n}\n"]}]);
 
 
 /***/ }),
