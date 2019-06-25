@@ -30,7 +30,7 @@ class AdminController {
   }
 
   async home({respnose, request, auth, session}){
-
+    return "it worked"
   }
 }
 

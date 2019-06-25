@@ -1,5 +1,5 @@
 import React, {Component, Fragment} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import Header from './Header/Header';
 import Home from './Home/Home';
 import NotFound from './NotFound/NotFound';
@@ -7,6 +7,8 @@ import Schedule from './Schedule/Schedule';
 import Apply from './Apply/Apply';
 import Login from './Login/Login';
 import Admin from './Admin/AdminPage';
+import isAuthenticated from './Utils/Auth';
+import AuthenticatedRoute from './AuthenticatedRoute/AuthenticatedRoute';
 import cookies from 'js-cookies';
 
 
@@ -27,6 +29,8 @@ export default class App extends Component {
 			});
 	};
 
+
+
 	render() {
 		return (
 
@@ -34,28 +38,30 @@ export default class App extends Component {
 				<div>
 				<Header/>
 				<Switch>
-
 					<Route exact  path="/" component={Home} />
 					<Route exact path="/schedule" render={props =>
 						<Schedule {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
 					}
 						/>
 						<Route exact path="/apply" render={props =>
-							<Apply {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
-						}
+							<Apply {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>}
 							/>
-							<Route exact path="/login" render={props =>
-								<Login {...props}  sessionChange={this.sessionIdChange} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
-							}
+						<Route exact path="/login" render={props =>
+								<Login {...props}  sessionChange={this.sessionIdChange} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>}
 								/>
-								<Route exact path="/admin" render={props =>
-									<Admin {...props}  scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
-								}
-									/>
-							<Route component={NotFound}/>
+						<PrivateRoute props='/admin/home' component={Admin}/>
+						<Route component={NotFound}/>
 				</Switch>
 				 </div>
       </Router>
 		);
 	}
 }
+
+const PrivateRoute = ({component: Component, ...rest}) => (
+	<Route {...rest} render={(props) => (
+		cookies.getItem('jwt') ?
+		<Component {...props} /> :
+		<Redirect to='/' />
+	)} />
+)

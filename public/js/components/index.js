@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 111:
+/***/ 113:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -44,7 +44,7 @@ exports.default = Heart;
 
 /***/ }),
 
-/***/ 173:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -104,21 +104,21 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(161);
+var _reactRouterDom = __webpack_require__(111);
 
-var _Header = __webpack_require__(84);
+var _Header = __webpack_require__(85);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(284);
+var _Home = __webpack_require__(285);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _NotFound = __webpack_require__(287);
+var _NotFound = __webpack_require__(288);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
-var _Schedule = __webpack_require__(291);
+var _Schedule = __webpack_require__(292);
 
 var _Schedule2 = _interopRequireDefault(_Schedule);
 
@@ -126,7 +126,7 @@ var _Apply = __webpack_require__(281);
 
 var _Apply2 = _interopRequireDefault(_Apply);
 
-var _Login = __webpack_require__(286);
+var _Login = __webpack_require__(287);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -134,11 +134,21 @@ var _AdminPage = __webpack_require__(277);
 
 var _AdminPage2 = _interopRequireDefault(_AdminPage);
 
-var _jsCookies = __webpack_require__(213);
+var _Auth = __webpack_require__(294);
+
+var _Auth2 = _interopRequireDefault(_Auth);
+
+var _AuthenticatedRoute = __webpack_require__(282);
+
+var _AuthenticatedRoute2 = _interopRequireDefault(_AuthenticatedRoute);
+
+var _jsCookies = __webpack_require__(78);
 
 var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -200,10 +210,7 @@ var App = function (_Component) {
 								return _react2.default.createElement(_Login2.default, _extends({}, props, { sessionChange: _this2.sessionIdChange, scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
 							}
 						}),
-						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/admin', render: function render(props) {
-								return _react2.default.createElement(_AdminPage2.default, _extends({}, props, { scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
-							}
-						}),
+						_react2.default.createElement(PrivateRoute, { props: '/admin/home', component: _AdminPage2.default }),
 						_react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
 					)
 				)
@@ -215,6 +222,16 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
+
+
+var PrivateRoute = function PrivateRoute(_ref) {
+	var Component = _ref.component,
+	    rest = _objectWithoutProperties(_ref, ['component']);
+
+	return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
+			return _jsCookies2.default.getItem('jwt') ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
+		} }));
+};
 
 /***/ }),
 
@@ -234,9 +251,13 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(82);
+var _reactDom = __webpack_require__(83);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _jsCookies = __webpack_require__(78);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -266,7 +287,21 @@ var Admin = function (_Component) {
 
 	_createClass(Admin, [{
 		key: 'componentWillMount',
-		value: function componentWillMount() {}
+		value: function componentWillMount() {
+			if (_jsCookies2.default.getItem('jwt')) {
+				return _react2.default.createElement(
+					'h1',
+					{ style: { marginTop: '56px' } },
+					'yes'
+				);
+			} else {
+				return _react2.default.createElement(
+					'h1',
+					{ style: { marginTop: '56px' } },
+					'no'
+				);
+			}
+		}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -338,7 +373,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Checkbox = __webpack_require__(173);
+var _Checkbox = __webpack_require__(174);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
@@ -576,9 +611,9 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HrefLinks = __webpack_require__(85);
+var _HrefLinks = __webpack_require__(86);
 
-var _Checkbox = __webpack_require__(173);
+var _Checkbox = __webpack_require__(174);
 
 var _Checkbox2 = _interopRequireDefault(_Checkbox);
 
@@ -586,11 +621,11 @@ var _ApplicationForm = __webpack_require__(279);
 
 var _ApplicationForm2 = _interopRequireDefault(_ApplicationForm);
 
-var _Validation = __webpack_require__(293);
+var _Validation = __webpack_require__(295);
 
 var _history = __webpack_require__(62);
 
-var _axios = __webpack_require__(164);
+var _axios = __webpack_require__(165);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -849,7 +884,7 @@ var _ApplicationsClosed = __webpack_require__(278);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
-var _Header = __webpack_require__(84);
+var _Header = __webpack_require__(85);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -882,6 +917,159 @@ exports.default = Apply;
 /***/ }),
 
 /***/ 282:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.authenticate = exports.isAuthenticated = exports.getRefreshToken = exports.getAccessToken = exports.AuthenticatedRoute = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(111);
+
+var _jsCookies = __webpack_require__(78);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AuthenticatedRoute = exports.AuthenticatedRoute = function AuthenticatedRoute(_ref) {
+  var Component = _ref.component,
+      exact = _ref.exact,
+      path = _ref.path;
+  return _react2.default.createElement(_reactRouterDom.Route, {
+    exact: exact,
+    path: path,
+    render: function render(props) {
+      return isAuthenticated() ? _react2.default.createElement(Component, props) : _react2.default.createElement('img', null);
+    }
+  });
+};
+
+var AuthenticateBeforeRender = function (_Component) {
+  _inherits(AuthenticateBeforeRender, _Component);
+
+  function AuthenticateBeforeRender() {
+    var _ref2;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, AuthenticateBeforeRender);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = AuthenticateBeforeRender.__proto__ || Object.getPrototypeOf(AuthenticateBeforeRender)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
+      isAuthenticated: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(AuthenticateBeforeRender, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      authenticate().then(function (isAuthenticated) {
+        _this2.setState({ isAuthenticated: isAuthenticated });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.state.isAuthenticated ? this.props.render() : null;
+    }
+  }]);
+
+  return AuthenticateBeforeRender;
+}(_react.Component);
+
+var getAccessToken = exports.getAccessToken = function getAccessToken() {
+  return _jsCookies2.default.getItem('jwt');
+};
+var getRefreshToken = exports.getRefreshToken = function getRefreshToken() {
+  return _jsCookies2.default.getItem('refresh_token');
+};
+var isAuthenticated = exports.isAuthenticated = function isAuthenticated() {
+  return !!getAccessToken();
+};
+
+var authenticate = exports.authenticate = function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var tokens, expires, inOneHour;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!getRefreshToken()) {
+              _context.next = 16;
+              break;
+            }
+
+            _context.prev = 1;
+            _context.next = 4;
+            return refreshTokens();
+
+          case 4:
+            tokens = _context.sent;
+            // call an API, returns tokens
+
+            expires = (tokens.expires_in || 60 * 60) * 1000;
+            inOneHour = new Date(new Date().getTime() + expires);
+
+            // you will have the exact same setters in your Login page/app too
+
+            _jsCookies2.default.setItem('access_token', tokens.access_token, { expires: inOneHour });
+            _jsCookies2.default.setItem('refresh_token', tokens.refresh_token);
+
+            return _context.abrupt('return', true);
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context['catch'](1);
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 16:
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 18:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined, [[1, 12]]);
+  }));
+
+  return function authenticate() {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.default = AuthenticatedRoute;
+
+/***/ }),
+
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1017,7 +1205,7 @@ exports.default = FaqSection;
 
 /***/ }),
 
-/***/ 283:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1092,7 +1280,7 @@ exports.default = Hero;
 
 /***/ }),
 
-/***/ 284:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1106,15 +1294,15 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WhatIsItSection = __webpack_require__(285);
+var _WhatIsItSection = __webpack_require__(286);
 
 var _WhatIsItSection2 = _interopRequireDefault(_WhatIsItSection);
 
-var _Hero = __webpack_require__(283);
+var _Hero = __webpack_require__(284);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _FaqSection = __webpack_require__(282);
+var _FaqSection = __webpack_require__(283);
 
 var _FaqSection2 = _interopRequireDefault(_FaqSection);
 
@@ -1134,7 +1322,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 285:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1190,7 +1378,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 286:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1208,15 +1396,15 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(84);
+var _Header = __webpack_require__(85);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _axios = __webpack_require__(164);
+var _axios = __webpack_require__(165);
 
 var _axios2 = _interopRequireDefault(_axios);
 
-var _jsCookies = __webpack_require__(213);
+var _jsCookies = __webpack_require__(78);
 
 var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
@@ -1414,7 +1602,7 @@ exports.default = Login;
 
 /***/ }),
 
-/***/ 287:
+/***/ 288:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1428,7 +1616,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(644);
+__webpack_require__(646);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1444,7 +1632,7 @@ exports.default = NotFound;
 
 /***/ }),
 
-/***/ 288:
+/***/ 289:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1458,11 +1646,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(111);
+var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(85);
+var _HrefLinks = __webpack_require__(86);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1509,7 +1697,7 @@ exports.default = ApplicationsClosed;
 
 /***/ }),
 
-/***/ 289:
+/***/ 290:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1537,7 +1725,7 @@ exports.default = FinishedSchedule;
 
 /***/ }),
 
-/***/ 290:
+/***/ 291:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1551,11 +1739,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(111);
+var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(85);
+var _HrefLinks = __webpack_require__(86);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1602,7 +1790,7 @@ exports.default = Offseason;
 
 /***/ }),
 
-/***/ 291:
+/***/ 292:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1618,23 +1806,23 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(84);
+var _Header = __webpack_require__(85);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _TakingApplications = __webpack_require__(292);
+var _TakingApplications = __webpack_require__(293);
 
 var _TakingApplications2 = _interopRequireDefault(_TakingApplications);
 
-var _Offseason = __webpack_require__(290);
+var _Offseason = __webpack_require__(291);
 
 var _Offseason2 = _interopRequireDefault(_Offseason);
 
-var _FinishedSchedule = __webpack_require__(289);
+var _FinishedSchedule = __webpack_require__(290);
 
 var _FinishedSchedule2 = _interopRequireDefault(_FinishedSchedule);
 
-var _ApplicationsClosed = __webpack_require__(288);
+var _ApplicationsClosed = __webpack_require__(289);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
@@ -1697,7 +1885,7 @@ exports.default = Schedule;
 
 /***/ }),
 
-/***/ 292:
+/***/ 293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1711,11 +1899,11 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Heart = __webpack_require__(111);
+var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(85);
+var _HrefLinks = __webpack_require__(86);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1762,7 +1950,97 @@ exports.default = TakingApplications;
 
 /***/ }),
 
-/***/ 293:
+/***/ 294:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.authenticate = exports.isAuthenticated = exports.getRefreshToken = exports.getAccessToken = undefined;
+
+var _jsCookies = __webpack_require__(78);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var getAccessToken = exports.getAccessToken = function getAccessToken() {
+  return _jsCookies2.default.getItem('jwt');
+};
+var getRefreshToken = exports.getRefreshToken = function getRefreshToken() {
+  return _jsCookies2.default.getItem('refresh_token');
+};
+var isAuthenticated = exports.isAuthenticated = function isAuthenticated() {
+  return !!getAccessToken();
+};
+
+var authenticate = exports.authenticate = function () {
+  var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var tokens, expires, inOneHour;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!getRefreshToken()) {
+              _context.next = 16;
+              break;
+            }
+
+            _context.prev = 1;
+            _context.next = 4;
+            return refreshTokens();
+
+          case 4:
+            tokens = _context.sent;
+            // call an API, returns tokens
+
+            expires = (tokens.expires_in || 60 * 60) * 1000;
+            inOneHour = new Date(new Date().getTime() + expires);
+
+            // you will have the exact same setters in your Login page/app too
+
+            _jsCookies2.default.set('access_token', tokens.access_token, { expires: inOneHour });
+            _jsCookies2.default.set('refresh_token', tokens.refresh_token);
+
+            return _context.abrupt('return', true);
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context['catch'](1);
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 16:
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 18:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined, [[1, 12]]);
+  }));
+
+  return function authenticate() {
+    return _ref.apply(this, arguments);
+  };
+}();
+//
+// <Route exact path="/admin" render={props =>
+//   <Admin {...props}  scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>}
+//   />
+
+/***/ }),
+
+/***/ 295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1814,7 +2092,7 @@ function validateCheckboxes(checkboxGroupName, checkboxGroup) {
 
 /***/ }),
 
-/***/ 294:
+/***/ 296:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1824,7 +2102,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(82);
+var _reactDom = __webpack_require__(83);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -1838,21 +2116,21 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 497:
+/***/ 499:
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(498)(true);
+exports = module.exports = __webpack_require__(500)(true);
 // Module
 exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\n  padding: 200px;\n  font-size: 3rem;\n\n}\n"]}]);
 
 
 /***/ }),
 
-/***/ 644:
+/***/ 646:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(497);
+var content = __webpack_require__(499);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1866,7 +2144,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(645)(content, options);
+var update = __webpack_require__(647)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -1899,7 +2177,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 84:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1988,7 +2266,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 85:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2004,4 +2282,4 @@ var HrefLinks = exports.HrefLinks = {
 
 /***/ })
 
-},[294]);
+},[296]);

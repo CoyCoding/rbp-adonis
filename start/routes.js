@@ -26,8 +26,7 @@ Route.group(()=>{
   Route.post('/logout', 'AdminController.logout');
 }).prefix('admin')
 
-Route.get('/admin/home', 'AdminController.home').middleware('auth');
-
+//Route.get('/admin/home', 'AdminController.home');
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');
 // Route.get('/admin', 'AdminController.index');
