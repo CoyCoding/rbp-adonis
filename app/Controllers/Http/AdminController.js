@@ -12,11 +12,7 @@ class AdminController {
         const user = await User.findBy('username', username)
         const accessToken = await auth.withRefreshToken().generate(user)
         console.log(accessToken)
-        return ''
-        return response.json({
-          user: user,
-          access_token: accessToken
-        })
+        return accessToken
       }
     }catch (e){
       console.log(e)
@@ -34,7 +30,6 @@ class AdminController {
   }
 
   async home({respnose, request, auth, session}){
-    return 'home'
 
   }
 }

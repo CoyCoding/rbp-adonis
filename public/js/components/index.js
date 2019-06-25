@@ -169,7 +169,9 @@ var App = function (_Component) {
 
 	_createClass(App, [{
 		key: 'componentWillMount',
-		value: function componentWillMount() {}
+		value: function componentWillMount() {
+			console.log(_jsCookies2.default.getItem('jwt'));
+		}
 	}, {
 		key: 'render',
 		value: function render() {
@@ -1276,9 +1278,7 @@ var Login = function (_Component) {
                 _context.prev = 4;
                 _context.next = 7;
                 return _axios2.default.post('/admin/login', self.state).then(function (res) {
-                  console.log(res);
-                  //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
-                  //  console.log(cookies.getItem('Authorization'))
+                  _jsCookies2.default.setItem('jwt', JSON.stringify(res.data));
                 });
 
               case 7:
@@ -1329,45 +1329,16 @@ var Login = function (_Component) {
 
                 submitEvent.preventDefault();
                 self = _this;
-                //const errorArr = getErrors();
 
                 console.log(_this.state);
+                _jsCookies2.default.removeItem('jwt');
 
-                if (false) {
-                  _context2.next = 15;
-                  break;
-                }
-
-                _context2.prev = 5;
-                _context2.next = 8;
-                return _axios2.default.post('/admin/logout').then(function (res) {});
-
-              case 8:
-                _context2.next = 13;
-                break;
-
-              case 10:
-                _context2.prev = 10;
-                _context2.t0 = _context2['catch'](5);
-
-                console.log(_context2.t0);
-                //self.props.history.push('/apply-error');
-                //window.scrollTo(0, 0);
-
-              case 13:
-                _context2.next = 16;
-                break;
-
-              case 15:
-                // Show Errors on bad inputs
-                console.log('errorArr');
-
-              case 16:
+              case 5:
               case 'end':
                 return _context2.stop();
             }
           }
-        }, _callee2, _this2, [[5, 10]]);
+        }, _callee2, _this2);
       }));
 
       return function (_x2) {

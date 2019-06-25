@@ -50,9 +50,8 @@ export default class Login extends Component {
         await axios
           .post('/admin/login', self.state)
           .then(function(res){
-            console.log(res)
-            //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
-          //  console.log(cookies.getItem('Authorization'))
+            cookies.setItem('jwt', JSON.stringify(res.data))
+
         });
       } catch (error){
         console.log(error)
@@ -76,24 +75,9 @@ export default class Login extends Component {
   handleSubmitLogout = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
-    //const errorArr = getErrors();
     console.log(this.state)
-    if(1){
-      try{
-        await axios
-          .post('/admin/logout')
-          .then(function(res){
-        });
-      } catch (error){
-        console.log(error)
-        //self.props.history.push('/apply-error');
-        //window.scrollTo(0, 0);
-      }
-    }
-    else{
-      // Show Errors on bad inputs
-      console.log('errorArr')
-    }
+    cookies.removeItem('jwt')
+
     function getErrors() {
       //for each input name in form errors filter and return all inputs with errors
       return Object.keys(self.state.formErrors)

@@ -18,11 +18,9 @@ export default class App extends Component {
 			eventDate: ''
 		};
 	};
-
 	componentWillMount(){
-
+		console.log(cookies.getItem('jwt'))
 	}
-
 	scheduleStatusChange = (event) => {
 			this.setState({
 				scheduleStatus: event.target.value

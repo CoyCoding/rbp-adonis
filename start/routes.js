@@ -19,14 +19,14 @@ const Route = use('Route')
 Route.on('/').render('welcome');
 Route.group(()=>{
   Route.post('','ApplicationController.store');
-}).prefix('apply')
 
+}).prefix('apply')
 Route.group(()=>{
   Route.post('/login', 'AdminController.login');
   Route.post('/logout', 'AdminController.logout');
 }).prefix('admin')
 
-
+Route.get('/admin/home', 'AdminController.home').middleware('auth');
 
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');
