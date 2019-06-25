@@ -1275,7 +1275,7 @@ var Login = function (_Component) {
 
                 _context.prev = 4;
                 _context.next = 7;
-                return _axios2.default.post('/login', self.state).then(function (res) {
+                return _axios2.default.post('/admin/login', self.state).then(function (res) {
                   console.log(res);
                   //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
                   //  console.log(cookies.getItem('Authorization'))
@@ -1340,7 +1340,7 @@ var Login = function (_Component) {
 
                 _context2.prev = 5;
                 _context2.next = 8;
-                return _axios2.default.post('/logout').then(function (res) {});
+                return _axios2.default.post('/admin/logout').then(function (res) {});
 
               case 8:
                 _context2.next = 13;

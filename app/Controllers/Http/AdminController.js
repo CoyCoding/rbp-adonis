@@ -5,14 +5,37 @@ const User = use('App/Models/User');
 const Token = use('App/Models/Token');
 
 class AdminController {
-  async login({response, request, auth}){
-    console.log(response)
+  async login({response, request, auth, session}){
+    const {username, password} = request.all();
+    try {
+      if (await auth.attempt(username, password)) {
+        const user = await User.findBy('username', username)
+        const accessToken = await auth.withRefreshToken().generate(user)
+        console.log(accessToken)
+        return ''
+        return response.json({
+          user: user,
+          access_token: accessToken
+        })
+      }
+    }catch (e){
+      console.log(e)
+      return e
+    }
   }
   async logout({respnose, request, auth, session}){
-    console.log(response)
+    console.log('logged off');
+    try{
+        await auth.logout();
+    }catch(e){
+      console.log(e)
+    }
+
   }
-  async index({response, request}){
-    return <h1>auth</h1>
+
+  async home({respnose, request, auth, session}){
+    return 'home'
+
   }
 }
 

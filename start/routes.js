@@ -22,11 +22,11 @@ Route.group(()=>{
 }).prefix('apply')
 
 Route.group(()=>{
-  Route.post('/', 'AdminController.login');
+  Route.post('/login', 'AdminController.login');
+  Route.post('/logout', 'AdminController.logout');
+}).prefix('admin')
 
-}).prefix('login')
 
-Route.post('/logout', 'AdminController.logout');
 
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');

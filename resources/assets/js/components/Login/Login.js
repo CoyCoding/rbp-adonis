@@ -48,7 +48,7 @@ export default class Login extends Component {
     if(1){
       try{
         await axios
-          .post('/login', self.state)
+          .post('/admin/login', self.state)
           .then(function(res){
             console.log(res)
             //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
@@ -81,7 +81,7 @@ export default class Login extends Component {
     if(1){
       try{
         await axios
-          .post('/logout')
+          .post('/admin/logout')
           .then(function(res){
         });
       } catch (error){
