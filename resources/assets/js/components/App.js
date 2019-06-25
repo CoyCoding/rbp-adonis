@@ -9,6 +9,7 @@ import Login from './Login/Login';
 import Admin from './Admin/AdminPage';
 import cookies from 'js-cookies';
 
+
 export default class App extends Component {
 	constructor() {
 		super();
@@ -18,6 +19,9 @@ export default class App extends Component {
 		};
 	};
 
+	componentWillMount(){
+
+	}
 
 	scheduleStatusChange = (event) => {
 			this.setState({

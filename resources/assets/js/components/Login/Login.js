@@ -44,13 +44,15 @@ export default class Login extends Component {
     submitEvent.preventDefault();
     const self = this;
     //const errorArr = getErrors();
+
     if(1){
-      console.log(cookies)
       try{
         await axios
           .post('/login', self.state)
           .then(function(res){
             console.log(res)
+            //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
+          //  console.log(cookies.getItem('Authorization'))
         });
       } catch (error){
         console.log(error)

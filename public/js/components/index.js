@@ -168,6 +168,9 @@ var App = function (_Component) {
 	}
 
 	_createClass(App, [{
+		key: 'componentWillMount',
+		value: function componentWillMount() {}
+	}, {
 		key: 'render',
 		value: function render() {
 			var _this2 = this;
@@ -1266,42 +1269,43 @@ var Login = function (_Component) {
                 //const errorArr = getErrors();
 
                 if (false) {
-                  _context.next = 15;
+                  _context.next = 14;
                   break;
                 }
 
-                console.log(_jsCookies2.default);
-                _context.prev = 5;
-                _context.next = 8;
+                _context.prev = 4;
+                _context.next = 7;
                 return _axios2.default.post('/login', self.state).then(function (res) {
                   console.log(res);
+                  //cookies.setItem('Authorization', `bearer ${res.data.access_token.token}` )
+                  //  console.log(cookies.getItem('Authorization'))
                 });
 
-              case 8:
-                _context.next = 13;
+              case 7:
+                _context.next = 12;
                 break;
 
-              case 10:
-                _context.prev = 10;
-                _context.t0 = _context['catch'](5);
+              case 9:
+                _context.prev = 9;
+                _context.t0 = _context['catch'](4);
 
                 console.log(_context.t0);
                 //self.props.history.push('/apply-error');
                 //window.scrollTo(0, 0);
 
-              case 13:
-                _context.next = 16;
+              case 12:
+                _context.next = 15;
                 break;
 
-              case 15:
+              case 14:
                 console.log('errorArr');
 
-              case 16:
+              case 15:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[5, 10]]);
+        }, _callee, _this2, [[4, 9]]);
       }));
 
       return function (_x) {

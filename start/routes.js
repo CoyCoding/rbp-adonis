@@ -22,7 +22,8 @@ Route.group(()=>{
 }).prefix('apply')
 
 Route.group(()=>{
-  Route.post('', 'AdminController.index');
+  Route.post('/', 'AdminController.login');
+
 }).prefix('login')
 
 Route.post('/logout', 'AdminController.logout');
