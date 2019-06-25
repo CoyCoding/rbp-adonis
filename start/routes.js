@@ -19,13 +19,12 @@ const Route = use('Route')
 Route.on('/').render('welcome');
 Route.group(()=>{
   Route.post('','ApplicationController.store');
-
 }).prefix('apply')
-Route.group(()=>{
-  Route.post('/login', 'AdminController.login');
-  Route.post('/logout', 'AdminController.logout');
-}).prefix('admin')
-
+// Route.group(()=>{
+//
+// }).prefix('admin')
+Route.post('/admin/login', 'AdminController.login');
+Route.post('/admin/logout', 'AdminController.logout');
 //Route.get('/admin/home', 'AdminController.home');
 // // Route.get('/apply', 'ApplicationController.index');
 // Route.get('/schedule', 'ScheduleController.index');

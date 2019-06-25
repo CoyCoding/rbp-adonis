@@ -14,13 +14,12 @@ export default class Admin extends Component {
 	};
   componentWillMount(){
 		if(cookies.getItem('jwt')){
-			return <h1 style={{marginTop: '56px'}}>yes</h1>
+			console.log('yes')
 		}else{
-			return <h1 style={{marginTop: '56px'}}>no</h1>
+			console.log('no')
 		}
   }
 	render() {
-    console.log(this.props.sessionId)
 		return (
       <h1 style={{marginTop: '56px'}}>test {this.props.sessionId}</h1>
 		);

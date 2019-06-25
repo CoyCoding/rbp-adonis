@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700');
 @import 'Header/Header.scss';
+@import 'NotFound/NotFound.scss'
+
 body {
   opacity: 0;
   transition: opacity 0.2s linear 0.2s;

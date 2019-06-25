@@ -37,19 +37,15 @@ export default class App extends Component {
       <Router>
 				<div>
 				<Header/>
-				<Switch>
-					<Route exact  path="/" component={Home} />
-					<Route exact path="/schedule" render={props =>
-						<Schedule {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>
-					}
-						/>
+					<Switch>
+						<Route exact  path="/" component={Home} />
+						<Route exact path="/schedule" render={props =>
+							<Schedule {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange }/>	}/>
 						<Route exact path="/apply" render={props =>
-							<Apply {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>}
-							/>
+							<Apply {...props} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/> } />
 						<Route exact path="/login" render={props =>
-								<Login {...props}  sessionChange={this.sessionIdChange} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/>}
-								/>
-						<PrivateRoute props='/admin/home' component={Admin}/>
+							<Login {...props}  sessionChange={this.sessionIdChange} scheduleStatus={this.state.scheduleStatus} scheduleStatusChange={this.scheduleStatusChange}/> }/>
+						<PrivateRoute exact path='/admin' component={Admin}/>
 						<Route component={NotFound}/>
 				</Switch>
 				 </div>

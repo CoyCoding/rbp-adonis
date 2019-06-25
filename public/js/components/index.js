@@ -200,17 +200,14 @@ var App = function (_Component) {
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/schedule', render: function render(props) {
 								return _react2.default.createElement(_Schedule2.default, _extends({}, props, { scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
-							}
-						}),
+							} }),
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/apply', render: function render(props) {
 								return _react2.default.createElement(_Apply2.default, _extends({}, props, { scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
-							}
-						}),
+							} }),
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', render: function render(props) {
 								return _react2.default.createElement(_Login2.default, _extends({}, props, { sessionChange: _this2.sessionIdChange, scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
-							}
-						}),
-						_react2.default.createElement(PrivateRoute, { props: '/admin/home', component: _AdminPage2.default }),
+							} }),
+						_react2.default.createElement(PrivateRoute, { exact: true, path: '/admin', component: _AdminPage2.default }),
 						_react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
 					)
 				)
@@ -289,23 +286,14 @@ var Admin = function (_Component) {
 		key: 'componentWillMount',
 		value: function componentWillMount() {
 			if (_jsCookies2.default.getItem('jwt')) {
-				return _react2.default.createElement(
-					'h1',
-					{ style: { marginTop: '56px' } },
-					'yes'
-				);
+				console.log('yes');
 			} else {
-				return _react2.default.createElement(
-					'h1',
-					{ style: { marginTop: '56px' } },
-					'no'
-				);
+				console.log('no');
 			}
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			console.log(this.props.sessionId);
 			return _react2.default.createElement(
 				'h1',
 				{ style: { marginTop: '56px' } },
@@ -1616,15 +1604,13 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(646);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function NotFound() {
   return _react2.default.createElement(
-    'header',
-    { id: 'not-found' },
-    '404'
+    "header",
+    { id: "not-found" },
+    "404"
   );
 }
 
@@ -2113,67 +2099,6 @@ var _App2 = _interopRequireDefault(_App);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _reactDom2.default.render(_react2.default.createElement(_App2.default, null), document.getElementById('app'));
-
-/***/ }),
-
-/***/ 499:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(500)(true);
-// Module
-exports.push([module.i, "#not-found {\n  padding: 200px;\n  font-size: 3rem; }\n", "",{"version":3,"sources":["D:/Atom/projects/React-adonis-working/rbp-adonis/resources/assets/js/components/NotFound/NotFound.scss"],"names":[],"mappings":"AAAA;EACE,cAAc;EACd,eAAe,EAAA","file":"NotFound.scss","sourcesContent":["#not-found{\n  padding: 200px;\n  font-size: 3rem;\n\n}\n"]}]);
-
-
-/***/ }),
-
-/***/ 646:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-var content = __webpack_require__(499);
-
-if(typeof content === 'string') content = [[module.i, content, '']];
-
-var transform;
-var insertInto;
-
-
-
-var options = {"hmr":true}
-
-options.transform = transform
-options.insertInto = undefined;
-
-var update = __webpack_require__(647)(content, options);
-
-if(content.locals) module.exports = content.locals;
-
-if(false) {
-	module.hot.accept("!!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/sass-loader/lib/loader.js??ref--1-2!./NotFound.scss", function() {
-		var newContent = require("!!../../../../../node_modules/css-loader/dist/cjs.js??ref--1-1!../../../../../node_modules/sass-loader/lib/loader.js??ref--1-2!./NotFound.scss");
-
-		if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-
-		var locals = (function(a, b) {
-			var key, idx = 0;
-
-			for(key in a) {
-				if(!b || a[key] !== b[key]) return false;
-				idx++;
-			}
-
-			for(key in b) idx--;
-
-			return idx === 0;
-		}(content.locals, newContent.locals));
-
-		if(!locals) throw new Error('Aborting CSS HMR due to changed css-modules locals.');
-
-		update(newContent);
-	});
-
-	module.hot.dispose(function() { update(); });
-}
 
 /***/ }),
 
