@@ -8,7 +8,7 @@ import Apply from './Apply/Apply';
 import Login from './Login/Login';
 import Admin from './Admin/AdminPage';
 import isAuthenticated from './Utils/Auth';
-import AuthenticatedRoute from './AuthenticatedRoute/AuthenticatedRoute';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
 import cookies from 'js-cookies';
 
 
@@ -53,11 +53,3 @@ export default class App extends Component {
 		);
 	}
 }
-
-const PrivateRoute = ({component: Component, ...rest}) => (
-	<Route {...rest} render={(props) => (
-		cookies.getItem('jwt') ?
-		<Component {...props} /> :
-		<Redirect to='/' />
-	)} />
-)

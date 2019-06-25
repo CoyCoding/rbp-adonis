@@ -110,11 +110,11 @@ var _Header = __webpack_require__(85);
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Home = __webpack_require__(285);
+var _Home = __webpack_require__(284);
 
 var _Home2 = _interopRequireDefault(_Home);
 
-var _NotFound = __webpack_require__(288);
+var _NotFound = __webpack_require__(287);
 
 var _NotFound2 = _interopRequireDefault(_NotFound);
 
@@ -126,7 +126,7 @@ var _Apply = __webpack_require__(281);
 
 var _Apply2 = _interopRequireDefault(_Apply);
 
-var _Login = __webpack_require__(287);
+var _Login = __webpack_require__(286);
 
 var _Login2 = _interopRequireDefault(_Login);
 
@@ -138,17 +138,15 @@ var _Auth = __webpack_require__(294);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
-var _AuthenticatedRoute = __webpack_require__(282);
+var _PrivateRoute = __webpack_require__(288);
 
-var _AuthenticatedRoute2 = _interopRequireDefault(_AuthenticatedRoute);
+var _PrivateRoute2 = _interopRequireDefault(_PrivateRoute);
 
 var _jsCookies = __webpack_require__(78);
 
 var _jsCookies2 = _interopRequireDefault(_jsCookies);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -207,7 +205,7 @@ var App = function (_Component) {
 						_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/login', render: function render(props) {
 								return _react2.default.createElement(_Login2.default, _extends({}, props, { sessionChange: _this2.sessionIdChange, scheduleStatus: _this2.state.scheduleStatus, scheduleStatusChange: _this2.scheduleStatusChange }));
 							} }),
-						_react2.default.createElement(PrivateRoute, { exact: true, path: '/admin', component: _AdminPage2.default }),
+						_react2.default.createElement(_PrivateRoute2.default, { exact: true, path: '/admin', component: _AdminPage2.default }),
 						_react2.default.createElement(_reactRouterDom.Route, { component: _NotFound2.default })
 					)
 				)
@@ -219,16 +217,6 @@ var App = function (_Component) {
 }(_react.Component);
 
 exports.default = App;
-
-
-var PrivateRoute = function PrivateRoute(_ref) {
-	var Component = _ref.component,
-	    rest = _objectWithoutProperties(_ref, ['component']);
-
-	return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
-			return _jsCookies2.default.getItem('jwt') ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: '/' });
-		} }));
-};
 
 /***/ }),
 
@@ -913,159 +901,6 @@ exports.default = Apply;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.authenticate = exports.isAuthenticated = exports.getRefreshToken = exports.getAccessToken = exports.AuthenticatedRoute = undefined;
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(5);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = __webpack_require__(111);
-
-var _jsCookies = __webpack_require__(78);
-
-var _jsCookies2 = _interopRequireDefault(_jsCookies);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var AuthenticatedRoute = exports.AuthenticatedRoute = function AuthenticatedRoute(_ref) {
-  var Component = _ref.component,
-      exact = _ref.exact,
-      path = _ref.path;
-  return _react2.default.createElement(_reactRouterDom.Route, {
-    exact: exact,
-    path: path,
-    render: function render(props) {
-      return isAuthenticated() ? _react2.default.createElement(Component, props) : _react2.default.createElement('img', null);
-    }
-  });
-};
-
-var AuthenticateBeforeRender = function (_Component) {
-  _inherits(AuthenticateBeforeRender, _Component);
-
-  function AuthenticateBeforeRender() {
-    var _ref2;
-
-    var _temp, _this, _ret;
-
-    _classCallCheck(this, AuthenticateBeforeRender);
-
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = AuthenticateBeforeRender.__proto__ || Object.getPrototypeOf(AuthenticateBeforeRender)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
-      isAuthenticated: false
-    }, _temp), _possibleConstructorReturn(_this, _ret);
-  }
-
-  _createClass(AuthenticateBeforeRender, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this2 = this;
-
-      authenticate().then(function (isAuthenticated) {
-        _this2.setState({ isAuthenticated: isAuthenticated });
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return this.state.isAuthenticated ? this.props.render() : null;
-    }
-  }]);
-
-  return AuthenticateBeforeRender;
-}(_react.Component);
-
-var getAccessToken = exports.getAccessToken = function getAccessToken() {
-  return _jsCookies2.default.getItem('jwt');
-};
-var getRefreshToken = exports.getRefreshToken = function getRefreshToken() {
-  return _jsCookies2.default.getItem('refresh_token');
-};
-var isAuthenticated = exports.isAuthenticated = function isAuthenticated() {
-  return !!getAccessToken();
-};
-
-var authenticate = exports.authenticate = function () {
-  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-    var tokens, expires, inOneHour;
-    return regeneratorRuntime.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            if (!getRefreshToken()) {
-              _context.next = 16;
-              break;
-            }
-
-            _context.prev = 1;
-            _context.next = 4;
-            return refreshTokens();
-
-          case 4:
-            tokens = _context.sent;
-            // call an API, returns tokens
-
-            expires = (tokens.expires_in || 60 * 60) * 1000;
-            inOneHour = new Date(new Date().getTime() + expires);
-
-            // you will have the exact same setters in your Login page/app too
-
-            _jsCookies2.default.setItem('access_token', tokens.access_token, { expires: inOneHour });
-            _jsCookies2.default.setItem('refresh_token', tokens.refresh_token);
-
-            return _context.abrupt('return', true);
-
-          case 12:
-            _context.prev = 12;
-            _context.t0 = _context['catch'](1);
-
-            history.push('/');
-            return _context.abrupt('return', false);
-
-          case 16:
-
-            history.push('/');
-            return _context.abrupt('return', false);
-
-          case 18:
-          case 'end':
-            return _context.stop();
-        }
-      }
-    }, _callee, undefined, [[1, 12]]);
-  }));
-
-  return function authenticate() {
-    return _ref3.apply(this, arguments);
-  };
-}();
-
-exports.default = AuthenticatedRoute;
-
-/***/ }),
-
-/***/ 283:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
 
 var _react = __webpack_require__(5);
 
@@ -1193,7 +1028,7 @@ exports.default = FaqSection;
 
 /***/ }),
 
-/***/ 284:
+/***/ 283:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1268,7 +1103,7 @@ exports.default = Hero;
 
 /***/ }),
 
-/***/ 285:
+/***/ 284:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1282,15 +1117,15 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _WhatIsItSection = __webpack_require__(286);
+var _WhatIsItSection = __webpack_require__(285);
 
 var _WhatIsItSection2 = _interopRequireDefault(_WhatIsItSection);
 
-var _Hero = __webpack_require__(284);
+var _Hero = __webpack_require__(283);
 
 var _Hero2 = _interopRequireDefault(_Hero);
 
-var _FaqSection = __webpack_require__(283);
+var _FaqSection = __webpack_require__(282);
 
 var _FaqSection2 = _interopRequireDefault(_FaqSection);
 
@@ -1310,7 +1145,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 286:
+/***/ 285:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1366,7 +1201,7 @@ exports.default = Home;
 
 /***/ }),
 
-/***/ 287:
+/***/ 286:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1430,7 +1265,8 @@ var Login = function (_Component) {
 
     _this.handleSubmit = function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(submitEvent) {
-        var self, getErrors;
+        var self, _this$props, match, location, history, getErrors;
+
         return regeneratorRuntime.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -1444,44 +1280,46 @@ var Login = function (_Component) {
 
                 submitEvent.preventDefault();
                 self = _this;
+                _this$props = _this.props, match = _this$props.match, location = _this$props.location, history = _this$props.history;
                 //const errorArr = getErrors();
 
                 if (false) {
-                  _context.next = 14;
+                  _context.next = 15;
                   break;
                 }
 
-                _context.prev = 4;
-                _context.next = 7;
+                _context.prev = 5;
+                _context.next = 8;
                 return _axios2.default.post('/admin/login', self.state).then(function (res) {
                   _jsCookies2.default.setItem('jwt', JSON.stringify(res.data));
+                  history.push('/admin');
                 });
 
-              case 7:
-                _context.next = 12;
+              case 8:
+                _context.next = 13;
                 break;
 
-              case 9:
-                _context.prev = 9;
-                _context.t0 = _context['catch'](4);
+              case 10:
+                _context.prev = 10;
+                _context.t0 = _context['catch'](5);
 
                 console.log(_context.t0);
                 //self.props.history.push('/apply-error');
                 //window.scrollTo(0, 0);
 
-              case 12:
-                _context.next = 15;
+              case 13:
+                _context.next = 16;
                 break;
 
-              case 14:
+              case 15:
                 console.log('errorArr');
 
-              case 15:
+              case 16:
               case 'end':
                 return _context.stop();
             }
           }
-        }, _callee, _this2, [[4, 9]]);
+        }, _callee, _this2, [[5, 10]]);
       }));
 
       return function (_x) {
@@ -1590,7 +1428,7 @@ exports.default = Login;
 
 /***/ }),
 
-/***/ 288:
+/***/ 287:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1615,6 +1453,159 @@ function NotFound() {
 }
 
 exports.default = NotFound;
+
+/***/ }),
+
+/***/ 288:
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.authenticate = exports.isAuthenticated = exports.getRefreshToken = exports.getAccessToken = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(5);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = __webpack_require__(111);
+
+var _jsCookies = __webpack_require__(78);
+
+var _jsCookies2 = _interopRequireDefault(_jsCookies);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var PrivateRoute = function PrivateRoute(_ref) {
+  var Component = _ref.component,
+      rest = _objectWithoutProperties(_ref, ['component']);
+
+  return _react2.default.createElement(_reactRouterDom.Route, _extends({}, rest, { render: function render(props) {
+      return _jsCookies2.default.getItem('jwt') ? _react2.default.createElement(Component, props) : _react2.default.createElement(_reactRouterDom.Redirect, { to: 'login' });
+    } }));
+};
+
+var AuthenticateBeforeRender = function (_Component) {
+  _inherits(AuthenticateBeforeRender, _Component);
+
+  function AuthenticateBeforeRender() {
+    var _ref2;
+
+    var _temp, _this, _ret;
+
+    _classCallCheck(this, AuthenticateBeforeRender);
+
+    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref2 = AuthenticateBeforeRender.__proto__ || Object.getPrototypeOf(AuthenticateBeforeRender)).call.apply(_ref2, [this].concat(args))), _this), _this.state = {
+      isAuthenticated: false
+    }, _temp), _possibleConstructorReturn(_this, _ret);
+  }
+
+  _createClass(AuthenticateBeforeRender, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      authenticate().then(function (isAuthenticated) {
+        _this2.setState({ isAuthenticated: isAuthenticated });
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return this.state.isAuthenticated ? this.props.render() : null;
+    }
+  }]);
+
+  return AuthenticateBeforeRender;
+}(_react.Component);
+
+var getAccessToken = exports.getAccessToken = function getAccessToken() {
+  return _jsCookies2.default.getItem('jwt');
+};
+var getRefreshToken = exports.getRefreshToken = function getRefreshToken() {
+  return _jsCookies2.default.getItem('refresh_token');
+};
+var isAuthenticated = exports.isAuthenticated = function isAuthenticated() {
+  return !!getAccessToken();
+};
+
+var authenticate = exports.authenticate = function () {
+  var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    var tokens, expires, inOneHour;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            if (!getRefreshToken()) {
+              _context.next = 16;
+              break;
+            }
+
+            _context.prev = 1;
+            _context.next = 4;
+            return refreshTokens();
+
+          case 4:
+            tokens = _context.sent;
+            // call an API, returns tokens
+
+            expires = (tokens.expires_in || 60 * 60) * 1000;
+            inOneHour = new Date(new Date().getTime() + expires);
+
+            // you will have the exact same setters in your Login page/app too
+
+            _jsCookies2.default.setItem('access_token', tokens.access_token, { expires: inOneHour });
+            _jsCookies2.default.setItem('refresh_token', tokens.refresh_token);
+
+            return _context.abrupt('return', true);
+
+          case 12:
+            _context.prev = 12;
+            _context.t0 = _context['catch'](1);
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 16:
+
+            history.push('/');
+            return _context.abrupt('return', false);
+
+          case 18:
+          case 'end':
+            return _context.stop();
+        }
+      }
+    }, _callee, undefined, [[1, 12]]);
+  }));
+
+  return function authenticate() {
+    return _ref3.apply(this, arguments);
+  };
+}();
+
+exports.default = PrivateRoute;
 
 /***/ }),
 

@@ -1,22 +1,12 @@
 import React, {Component, Fragment} from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch,Redirect } from 'react-router-dom';
 
-export const AuthenticatedRoute = ({
-  component: Component,
-  exact,
-  path,
-}) => (
-  <Route
-    exact={exact}
-    path={path}
-    render={props =>
-      isAuthenticated() ? (
-        <Component {...props} />
-      ) : (
-        <img/>
-      )
-    }
-  />
+const PrivateRoute = ({component: Component, ...rest}) => (
+	<Route {...rest} render={(props) => (
+		cookies.getItem('jwt') ?
+		<Component {...props} /> :
+		<Redirect to='login' />
+	)} />
 )
 
 class AuthenticateBeforeRender extends Component {
@@ -64,4 +54,4 @@ export const authenticate = async () => {
   return false
 }
 
-export default AuthenticatedRoute;
+export default PrivateRoute;

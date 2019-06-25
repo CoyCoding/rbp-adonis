@@ -43,6 +43,7 @@ export default class Login extends Component {
   handleSubmit = async (submitEvent) =>{
     submitEvent.preventDefault();
     const self = this;
+    const { match, location, history } = this.props;
     //const errorArr = getErrors();
 
     if(1){
@@ -51,7 +52,7 @@ export default class Login extends Component {
           .post('/admin/login', self.state)
           .then(function(res){
             cookies.setItem('jwt', JSON.stringify(res.data))
-
+            history.push('/admin')
         });
       } catch (error){
         console.log(error)
