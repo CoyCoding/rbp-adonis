@@ -1,0 +1,16 @@
+import React from 'react';
+import WhatIsItSection from './WhatIsItSection/WhatIsItSection'
+import Hero from './Hero/Hero';
+import FaqSection from './FaqSection/FaqSection';
+
+function Home() {
+  return (
+    <section id="home">
+      <Hero />
+      <WhatIsItSection />
+      <FaqSection />
+    </section>
+  );
+}
+
+export default Home;
