@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import {Redirect } from 'react-router-dom';
+
 import Header from '.././Header/Header.js';
 import axios from 'axios';
 import cookies from 'js-cookies';
@@ -18,9 +20,10 @@ export default class Login extends Component {
   }
 
   componentWillMount() {
-  this.setState({
-
-  })
+    const {history} = this.props;
+    if(cookies.getItem('jwt')){
+      history.push('admin')
+    }
 }
 
   handleTextChange = (event) => {
@@ -45,7 +48,6 @@ export default class Login extends Component {
     const self = this;
     const { match, location, history } = this.props;
     //const errorArr = getErrors();
-
     if(1){
       try{
         await axios

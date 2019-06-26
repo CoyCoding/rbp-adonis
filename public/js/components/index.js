@@ -104,9 +104,9 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(111);
+var _reactRouterDom = __webpack_require__(83);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(86);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -236,7 +236,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(83);
+var _reactDom = __webpack_require__(84);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -587,7 +587,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(87);
 
 var _Checkbox = __webpack_require__(174);
 
@@ -860,7 +860,7 @@ var _ApplicationsClosed = __webpack_require__(278);
 
 var _ApplicationsClosed2 = _interopRequireDefault(_ApplicationsClosed);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(86);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -1219,7 +1219,9 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(85);
+var _reactRouterDom = __webpack_require__(83);
+
+var _Header = __webpack_require__(86);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -1375,7 +1377,11 @@ var Login = function (_Component) {
   _createClass(Login, [{
     key: 'componentWillMount',
     value: function componentWillMount() {
-      this.setState({});
+      var history = this.props.history;
+
+      if (_jsCookies2.default.getItem('jwt')) {
+        history.push('admin');
+      }
     }
   }, {
     key: 'render',
@@ -1475,7 +1481,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(111);
+var _reactRouterDom = __webpack_require__(83);
 
 var _jsCookies = __webpack_require__(78);
 
@@ -1627,7 +1633,7 @@ var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1720,7 +1726,7 @@ var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1783,7 +1789,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = __webpack_require__(85);
+var _Header = __webpack_require__(86);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -1880,7 +1886,7 @@ var _Heart = __webpack_require__(113);
 
 var _Heart2 = _interopRequireDefault(_Heart);
 
-var _HrefLinks = __webpack_require__(86);
+var _HrefLinks = __webpack_require__(87);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2079,7 +2085,7 @@ var _react = __webpack_require__(5);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(83);
+var _reactDom = __webpack_require__(84);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -2093,7 +2099,7 @@ _reactDom2.default.render(_react2.default.createElement(_App2.default, null), do
 
 /***/ }),
 
-/***/ 85:
+/***/ 86:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2182,7 +2188,7 @@ exports.default = Header;
 
 /***/ }),
 
-/***/ 86:
+/***/ 87:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
